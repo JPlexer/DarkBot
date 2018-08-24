@@ -57,7 +57,7 @@ client.on('message', message => {
     const args2 = messageArray.slice(1);
     const allowedRole = message.guild.roles.find("name", "darkbotadmin");
     const mute = message.guild.roles.get("419836397399179265");
-    const time = tinydate('Current time: [{DD}.{MM}.{YYYY} {HH}:{mm}:{ss}]');
+    const time = tinydate('{DD}.{MM}.{YYYY} {HH}:{mm}:{ss}');
 
     if (!guilds[message.guild.id]) {
         guilds[message.guild.id] = {
@@ -116,7 +116,7 @@ client.on('message', message => {
     .addField("Gekickter User", `${kUser} mit der ID ${kUser.id}`)
     .addField("Gekickt von", `<@${message.author.id}> mit der ID ${message.author.id}`)
     .addField("Gekicket in", message.channel)
-    .addField("Zeit", time)
+    .addField("Zeit", time())
     .addField("Grund", kReason);
 
     var kickChannel = message.guild.channels.find(`name`, "verwarnungen");
@@ -141,7 +141,7 @@ client.on('message', message => {
     .addField("Gebannter Nutzer", `${bUser} mit der ID ${bUser.id}`)
     .addField("Gebannt Von", `<@${message.author.id}> mit der ID ${message.author.id}`)
     .addField("Gebannt in", message.channel)
-    .addField("Zeit", time)
+    .addField("Zeit", time())
     .addField("Grund", bReason);
 
     var incidentchannel = message.guild.channels.find(`name`, "verwarnungen");
@@ -153,7 +153,7 @@ client.on('message', message => {
 
 return;
 
-}else if (lc.startsWith(`${prefix}ban`)) {
+}else if (lc.startsWith(`${prefix}unban`)) {
     var ubUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!ubUser) return message.channel.send("Can't find user!");
     if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
@@ -162,10 +162,9 @@ return;
     var ubanEmbed = new Discord.RichEmbed()
     .setDescription("Unban")
     .setColor("#00FFFB")
-    .addField("Gebannter Nutzer", `${ubUser} mit der ID ${ubUser.id}`)
-    .addField("Gebannt Von", `<@${message.author.id}> mit der ID ${message.author.id}`)
-    .addField("Gebannt in", message.channel)
-    .addField("Zeit", time)
+    .addField("Entbannter Nutzer", `${ubUser} mit der ID ${ubUser.id}`)
+    .addField("Entbannt Von", `<@${message.author.id}> mit der ID ${message.author.id}`)
+    .addField("Zeit", time())
 
     var incidentchannel = message.guild.channels.find(`name`, "verwarnungen");
     if(!incidentchannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
@@ -191,7 +190,7 @@ return;
     .addField("Gemuteter User", `${mUser} mit der ID ${mUser.id}`)
     .addField("Gemutet von", `<@${message.author.id}> mit der ID ${message.author.id}`)
     .addField("Gemutet in", message.channel)
-    .addField("Zeit", time)
+    .addField("Zeit", time())
     .addField("Grund", mReason);
 
     var muteChannel = message.guild.channels.find(`name`, "verwarnungen");
@@ -218,7 +217,7 @@ return;
   .addField("Gemuteter User", `${tmUser} mit der ID ${tmUser.id}`)
   .addField("Gemutet von", `<@${message.author.id}> mit der ID ${message.author.id}`)
   .addField("Gemutet in", message.channel)
-  .addField("Zeit", time)
+  .addField("Zeit", time())
   .addField("Länge", `${ms(ms(mutetime))}` );
 
   var tmuteChannel = message.guild.channels.find(`name`, "verwarnungen");
@@ -246,7 +245,7 @@ return;
   .addField("Gebannter User", `${tbUser} mit der ID ${tbUser.id}`)
   .addField("Gebannt von", `<@${message.author.id}> mit der ID ${message.author.id}`)
   .addField("Gebannt in", message.channel)
-  .addField("Zeit", time)
+  .addField("Zeit", time())
   .addField("Länge", `${ms(ms(bantime))}` );
 
   var tbanChannel = message.guild.channels.find(`name`, "verwarnungen");
@@ -267,7 +266,7 @@ return;
     if(!umuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
     message.guild.member(umUser).removeRole(mute);
-    umuteChannel.send(`<@${tmUser.id}> wurde Entmutet!`);
+    umuteChannel.send(`<@${umUser.id}> wurde Entmutet!`);
 
     return;
 
@@ -283,7 +282,7 @@ return;
     .addField("Reporteter User", `${rUser} mit der ID ${rUser.id}`)
     .addField("Reportet von", `${message.author} mit der ID ${message.author.id}`)
     .addField("Channel", message.channel)
-    .addField("Zeit", time)
+    .addField("Zeit", time())
     .addField("Grund", rreason);
 
     var reportschannel = message.guild.channels.find(`name`, "reports");
