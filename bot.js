@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.4"
+const botver = "v.0.0.5"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -102,8 +102,8 @@ client.on('message', message => {
     var kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!kUser) return message.channel.send("Can't find user!");
     var kReason = args2.join(" ").slice(22);
-    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("No can do pal!");
-    if(kUser.roles.has(allowedRole.id)) return message.channel.send("That person can't be kicked!");
+    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(kUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
 
     var kickEmbed = new Discord.RichEmbed()
     .setDescription("~Kick~")
@@ -126,8 +126,8 @@ client.on('message', message => {
     var bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Can't find user!");
     var bReason = args2.join(" ").slice(22);
-    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("No can do pal!");
-    if(bUser.roles.has(allowedRole.id)) return message.channel.send("That person can't be kicked!");
+    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(bUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
 
     var banEmbed = new Discord.RichEmbed()
     .setDescription("~Ban~")
@@ -155,8 +155,8 @@ return;
     var reportEmbed = new Discord.RichEmbed()
     .setDescription("Report")
     .setColor("#00FFFB")
-    .addField("Reporteter User", `${rUser} with ID: ${rUser.id}`)
-    .addField("Reportet von", `${message.author} with ID: ${message.author.id}`)
+    .addField("Reporteter User", `${rUser} mit der ID ${rUser.id}`)
+    .addField("Reportet von", `${message.author} mit der ID ${message.author.id}`)
     .addField("Channel", message.channel)
     .addField("Zeit", message.createdAt)
     .addField("Grund", rreason);
