@@ -117,7 +117,7 @@ client.on('message', message => {
     var kickChannel = message.guild.channels.find(`name`, "verwarnungen");
     if(!kickChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
-    message.guild.member(kUser).kick(kReason);
+    kUser.kick(kReason);
     kickChannel.send(kickEmbed);
 
     return;
@@ -141,7 +141,7 @@ client.on('message', message => {
     var incidentchannel = message.guild.channels.find(`name`, "verwarnungen");
     if(!incidentchannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
-    message.guild.member(bUser).ban(bReason);
+    bUser.ban(bReason);
     incidentchannel.send(banEmbed);
 
 
