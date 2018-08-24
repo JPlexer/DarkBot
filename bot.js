@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "db:";
-const botver = "v.0.0.1"
+const botver = "v.0.0.2"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -51,6 +51,9 @@ client.on('message', message => {
     //just some Variables
     const lc = message.content.toLowerCase();
     const args = message.content.split(' ').slice(1).join(" ");
+    const messageArray = message.content.split(" ");
+    const cmd = messageArray[0];
+    const args = messageArray.slice(1);
 
     if (!guilds[message.guild.id]) {
         guilds[message.guild.id] = {
@@ -75,8 +78,9 @@ client.on('message', message => {
         embed.setColor("#00FFFB");
         embed.setAuthor(`${branch} Help`);
         embed.setDescription(`Diese Commands kannst du mit dem ${branch} benutzen. Tippe einfach ${prefix}[command]`);
-        embed.addField("Spiel und Spaß Commands", `ping\npong\npizza\nhelp\nPing ${branch} am Anfang um mit ihm zu schreiben`, true);
+        embed.addField("Spiel und Spaß Commands", `ping\npong\npizza\nhelp\nsinfo\nreport\nPing ${branch} am Anfang um mit ihm zu schreiben`, true);
         embed.addField("Musik Commands", "play\nskip\nstop\nclear\nqueue", true);
+        embed.addField("Mod Commands", "kick\nban", true);
     
     
         embed.setFooter(`${branch} von JPlexer und der #DarknessCrew ${botver}`);
@@ -93,6 +97,91 @@ client.on('message', message => {
         message.channel.send(response)
       });
     });
+
+}else if (lc === `${prefix}kick`) {
+    let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!kUser) return message.channel.send("Can't find user!");
+    let kReason = args.join(" ").slice(22);
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
+    if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
+
+    let kickEmbed = new Discord.RichEmbed()
+    .setDescription("~Kick~")
+    .setColor("#e56b00")
+    .addField("Gekickter User", `${kUser} mit der ID ${kUser.id}`)
+    .addField("Gehickt von", `<@${message.author.id}> mit der ID ${message.author.id}`)
+    .addField("Gekicket in", message.channel)
+    .addField("Zeit", message.createdAt)
+    .addField("Grund", kReason);
+
+    let kickChannel = message.guild.channels.find(`name`, "verwahnungen");
+    if(!kickChannel) return message.channel.send("Kann den Verwahnungs Channel nicht finden!");
+
+    message.guild.member(kUser).kick(kReason);
+    kickChannel.send(kickEmbed);
+
+    return;
+
+}else if (lc === `${prefix}ban`) {
+    let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!bUser) return message.channel.send("Can't find user!");
+    let bReason = args.join(" ").slice(22);
+    if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("No can do pal!");
+    if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
+
+    let banEmbed = new Discord.RichEmbed()
+    .setDescription("~Ban~")
+    .setColor("#bc0000")
+    .addField("Gebannter Nutzer", `${bUser} mit der ID ${bUser.id}`)
+    .addField("Gebannt Von", `<@${message.author.id}> mit der ID ${message.author.id}`)
+    .addField("Gebannt in", message.channel)
+    .addField("Zeit", message.createdAt)
+    .addField("Grund", bReason);
+
+    let incidentchannel = message.guild.channels.find(`name`, "verwahnungen");
+    if(!incidentchannel) return message.channel.send("Kann den Verwahnungs Channel nicht finden!");
+
+    message.guild.member(bUser).ban(bReason);
+    incidentchannel.send(banEmbed);
+
+
+return;
+
+}else if (lc === `${prefix}report`) {
+    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!rUser) return message.channel.send("Couldn't find user.");
+    let rreason = args.join(" ").slice(22);
+
+    let reportEmbed = new Discord.RichEmbed()
+    .setDescription("Report")
+    .setColor("#15f153")
+    .addField("Reporteter User", `${rUser} with ID: ${rUser.id}`)
+    .addField("Reportet von", `${message.author} with ID: ${message.author.id}`)
+    .addField("Channel", message.channel)
+    .addField("Zeit", message.createdAt)
+    .addField("Grund", rreason);
+
+    let reportschannel = message.guild.channels.find(`name`, "reports");
+    if(!reportschannel) return message.channel.send("Kann den Report Channel nicht finden!");
+
+
+    message.delete().catch(O_o=>{});
+    reportschannel.send(reportEmbed);
+
+return;
+
+}else if (lc === `${prefix}sinfo`) {
+    let sicon = message.guild.iconURL;
+    let serverembed = new Discord.RichEmbed()
+    .setDescription("Server Information")
+    .setColor("#15f153")
+    .setThumbnail(sicon)
+    .addField("Server Name", message.guild.name)
+    .addField("Gemacht Am", message.guild.createdAt)
+    .addField("Du bist gejoint am", message.member.joinedAt)
+    .addField("User auf dem Server", message.guild.memberCount);
+
+return message.channel.send(serverembed);
 
 } else if (lc.startsWith(`${prefix}play`)) {
     if (message.member.voiceChannel || guilds[message.guild.id].voiceChannel != null) {
@@ -128,16 +217,10 @@ client.on('message', message => {
   } else if (lc.startsWith(`${prefix}skip`)) {
     if (!guilds[message.guild.id].skippers.includes(message.author.id)) {
       guilds[message.guild.id].skippers.push(message.author.id);
-      guilds[message.guild.id].skipReq++;
-      if (guilds[message.guild.id].skipReq >= Math.ceil((guilds[message.guild.id].voiceChannel.members.size - 1) / 2)) {
         skip_song(message);
         message.reply(" dein Skip wurde angennommen! Skippe jetzt!");
-      } else {
-        message.reply(`${` dein Skip wurde angennommen, aber du brauchst **${Math.ceil((guilds[message.guild.id].voiceChannel.members.size - 1) / 2)}` - guilds[message.guild.id].skipReq}** Stimmen mehr!`);
       }
-    } else {
-      message.reply(" du hast schon abgestimmt zu Skippen");
-    }
+
   } else if (lc.startsWith(`${prefix}queue`)) {
     let message2 = "```";
     for (let i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
