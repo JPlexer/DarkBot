@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.9"
+const botver = "v.0.0.11"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -197,13 +197,13 @@ return;
   .addField("Zeit", message.createdAt)
   .addField("Grund", mReason)
   .addField("Länge", `${ms(ms(mutetime))}` );
-  
+
   var tmuteChannel = message.guild.channels.find(`name`, "verwarnungen");
   if(!tmuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
   tmuteChannel.send(tmuteEmbed);
   setTimeout(function(){
     tmUser.removeRole(mute);
-    tmuteChannel.send(`<@${tmUser.id}> has been unmuted!`);
+    tmuteChannel.send(`<@${tmUser.id}> wurde Entmutet!`);
 }, ms(mutetime));
 
 }else if (lc.startsWith(`${prefix}unmute`)) {
@@ -212,18 +212,11 @@ return;
     if(!umUser) return message.channel.send("Can't find user!");
     if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
 
-    var umuteEmbed = new Discord.RichEmbed()
-    .setDescription("Entmute")
-    .setColor("#00FFFB")
-    .addField("Entmuteter User", `${umUser} mit der ID ${umUser.id}`)
-    .addField("Entmutet von", `<@${message.author.id}> mit der ID ${message.author.id}`)
-    .addField("Zeit", message.createdAt)
-
     var umuteChannel = message.guild.channels.find(`name`, "verwarnungen");
     if(!umuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
     message.guild.member(umUser).removeRole(mute);
-    umuteChannel.send(umuteEmbed);
+    umuteChannel.send(`<@${tmUser.id}> wurde Entmutet!`);
 
     return;
 
