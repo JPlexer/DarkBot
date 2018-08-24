@@ -103,7 +103,7 @@ client.on('message', message => {
     var kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!kUser) return message.channel.send("Can't find user!");
     var kReason = args2.join(" ").slice(22);
-    if (kReason === "") {kReason = undefiniert};
+    if (kReason === "") {kReason = "undefiniert"};
     if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
     if(kUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gekickt werden!");
 
@@ -128,7 +128,7 @@ client.on('message', message => {
     var bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Can't find user!");
     var bReason = args2.join(" ").slice(22);
-    if (bReason === "") {bReason = undefiniert};
+    if (bReason === "") {bReason = "undefiniert"};
     if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
     if(bUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
 
@@ -155,7 +155,7 @@ return;
     var mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!mUser) return message.channel.send("Can't find user!");
     var mReason = args2.join(" ").slice(22);
-    if (mReason === "") {mReason = undefiniert};
+    if (mReason === "") {mReason = "undefiniert"};
     if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
     if(mUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
 
@@ -201,7 +201,7 @@ return;
     var rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("Couldn't find user.");
     var rreason = args2.join(" ").slice(22);
-    if (rreason === "") {rreason = undefiniert};
+    if (rreason === "") {rreason = "undefiniert"};
 
     var reportEmbed = new Discord.RichEmbed()
     .setDescription("Report")
