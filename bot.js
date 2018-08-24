@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.5"
+const botver = "v.0.0.6"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -117,7 +117,7 @@ client.on('message', message => {
     var kickChannel = message.guild.channels.find(`name`, "verwarnungen");
     if(!kickChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
-    kUser.kick(kReason);
+    message.guild.member(kUser).kick(kReason);
     kickChannel.send(kickEmbed);
 
     return;
@@ -141,7 +141,7 @@ client.on('message', message => {
     var incidentchannel = message.guild.channels.find(`name`, "verwarnungen");
     if(!incidentchannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
-    bUser.ban(bReason);
+    message.guild.member(bUser).ban(bReason);
     incidentchannel.send(banEmbed);
 
 
