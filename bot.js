@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.30"
+const botver = "v.0.0.31"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -218,7 +218,7 @@ return;
   var tbanEmbed = new Discord.RichEmbed()
   .setDescription("TempBan")
   .setColor("#00FFFB")
-  .addField("Geabannter User", `${tmUser} mit der ID ${tmUser.id}`)
+  .addField("Geabannter User", `${tbUser} mit der ID ${tbUser.id}`)
   .addField("Gebannt von", `<@${message.author.id}> mit der ID ${message.author.id}`)
   .addField("Gebannt in", message.channel)
   .addField("Zeit", message.createdAt)
@@ -229,7 +229,7 @@ return;
   tbanChannel.send(tbanEmbed);
   setTimeout(function(){
     guild.unban(tbuser);
-    tbanChannel.send(`<@${tmUser.id}> wurde Entmutet!`);
+    tbanChannel.send(`<@${tbUser.id}> wurde Entmutet!`);
 }, ms(bantime));
 
 }else if (lc.startsWith(`${prefix}unmute`)) {
