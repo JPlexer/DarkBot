@@ -154,7 +154,7 @@ client.on('message', message => {
 return;
 
 }else if (lc.startsWith(`${prefix}unban`)) {
-    var ubUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    var ubUser = message.guild.members.get(args[0]);
     if(!ubUser) return message.channel.send("Can't find user!");
     if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
     if(ubUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
