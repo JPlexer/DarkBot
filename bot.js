@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.32"
+const botver = "v.0.0.33"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -228,7 +228,7 @@ return;
   if(!tbanChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
   tbanChannel.send(tbanEmbed);
   setTimeout(function(){
-    message.guild.unban(tbuser);
+    message.guild.unban(tbUser);
     tbanChannel.send(`<@${tbUser.id}> wurde Entmutet!`);
 }, ms(bantime));
 
