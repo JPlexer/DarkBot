@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.33"
+const botver = "v.0.1.0"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -149,28 +149,6 @@ client.on('message', message => {
 
     message.guild.member(bUser).ban(bReason);
     incidentchannel.send(banEmbed);
-
-
-return;
-
-}else if (lc.startsWith(`${prefix}unban`)) {
-    var ubUser = message.guild.members.get(args[0]);
-    if(!ubUser) return message.channel.send("Can't find user!");
-    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
-    if(ubUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
-
-    var ubanEmbed = new Discord.RichEmbed()
-    .setDescription("Unban")
-    .setColor("#00FFFB")
-    .addField("Entbannter Nutzer", `${ubUser} mit der ID ${ubUser.id}`)
-    .addField("Entbannt Von", `<@${message.author.id}> mit der ID ${message.author.id}`)
-    .addField("Zeit", time())
-
-    var incidentchannel = message.guild.channels.find(`name`, "verwarnungen");
-    if(!incidentchannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
-
-    message.guild.member.unban(ubUser);
-    incidentchannel.send(ubanEmbed);
 
 
 return;
