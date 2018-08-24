@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.27"
+const botver = "v.0.0.28"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -194,7 +194,7 @@ return;
   .addField("Gemutet von", `<@${message.author.id}> mit der ID ${message.author.id}`)
   .addField("Gemutet in", message.channel)
   .addField("Zeit", message.createdAt)
-  .addField("Länge", `${ms(ms(mutetime))}` );
+  .addField("Länge", `${mutetime}` );
 
   var tmuteChannel = message.guild.channels.find(`name`, "verwarnungen");
   if(!tmuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
