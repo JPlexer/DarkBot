@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.28"
+const botver = "v.0.0.29"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -183,7 +183,7 @@ return;
     if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
     if(tmUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
 
-  let mutetime = args[1];
+  let mutetime = args2[1];
   if(!mutetime) return message.reply("Du hast keine Zeit angegeben!");
 
   message.guild.member(tmUser).addRole(mute)
@@ -194,7 +194,7 @@ return;
   .addField("Gemutet von", `<@${message.author.id}> mit der ID ${message.author.id}`)
   .addField("Gemutet in", message.channel)
   .addField("Zeit", message.createdAt)
-  .addField("Länge", `${mutetime}` );
+  .addField("Länge", `${ms(ms(mutetime))}` );
 
   var tmuteChannel = message.guild.channels.find(`name`, "verwarnungen");
   if(!tmuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
