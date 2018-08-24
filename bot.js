@@ -133,7 +133,7 @@ client.on('message', message => {
         skip_song(message);
         message.reply(" dein Skip wurde angennommen! Skippe jetzt!");
       } else {
-        message.reply(`${` dein Skip wurde angennommen, aber du brauchst **${Math.ceil((guilds[message.guild.id].voiceChannel.members.size - 1) / 2)}` - skipReq}** Stimmen mehr!`);
+        message.reply(`${` dein Skip wurde angennommen, aber du brauchst **${Math.ceil((guilds[message.guild.id].voiceChannel.members.size - 1) / 2)}` - guilds[message.guild.id].skipReq}** Stimmen mehr!`);
       }
     } else {
       message.reply(" du hast schon abgestimmt zu Skippen");
