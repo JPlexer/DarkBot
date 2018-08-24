@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.14"
+const botver = "v.0.0.26"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -12,6 +12,7 @@ const fetchVideoInfo = require("youtube-info");
 const yt_api_key = process.env.YT_TOKEN;
 const clbot = new cleverbot(process.env.CL_USER, process.env.CL_TOKEN);
 const guilds = {};
+const ms = require("ms");
 
 global.getRandom = function (...args) {
   if (args.length == 1) {

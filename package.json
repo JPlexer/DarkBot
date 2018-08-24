@@ -16,6 +16,7 @@
     "get-youtube-id": "^1.0.0",
     "opusscript": "0.0.3",
     "cleverbot.io": "^1.0.4",
-    "ytdl-core": "^0.21.1"
+    "ytdl-core": "^0.21.1",
+    "me": "^2.1.1"
   }
 }
