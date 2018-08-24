@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
-const prefix = "db:";
-const botver = "v.0.0.2"
+const prefix = "(";
+const botver = "v.0.0.4"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -114,8 +114,8 @@ client.on('message', message => {
     .addField("Zeit", message.createdAt)
     .addField("Grund", kReason);
 
-    var kickChannel = message.guild.channels.find(`name`, "verwahnungen");
-    if(!kickChannel) return message.channel.send("Kann den Verwahnungs Channel nicht finden!");
+    var kickChannel = message.guild.channels.find(`name`, "verwarnungen");
+    if(!kickChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
     message.guild.member(kUser).kick(kReason);
     kickChannel.send(kickEmbed);
@@ -138,8 +138,8 @@ client.on('message', message => {
     .addField("Zeit", message.createdAt)
     .addField("Grund", bReason);
 
-    var incidentchannel = message.guild.channels.find(`name`, "verwahnungen");
-    if(!incidentchannel) return message.channel.send("Kann den Verwahnungs Channel nicht finden!");
+    var incidentchannel = message.guild.channels.find(`name`, "verwarnungen");
+    if(!incidentchannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
     message.guild.member(bUser).ban(bReason);
     incidentchannel.send(banEmbed);
