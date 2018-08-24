@@ -54,6 +54,7 @@ client.on('message', message => {
     const messageArray = message.content.split(" ");
     const args2 = messageArray.slice(1);
     const allowedRole = message.guild.roles.find("name", "darkbotadmin");
+    const mute = message.guild.roles.find("name", "muted");
 
     if (!guilds[message.guild.id]) {
         guilds[message.guild.id] = {
@@ -80,7 +81,7 @@ client.on('message', message => {
         embed.setDescription(`Diese Commands kannst du mit dem ${branch} benutzen. Tippe einfach ${prefix}[command]`);
         embed.addField("Spiel und Spaß Commands", `ping\npong\npizza\nhelp\nsinfo\nreport\nPing ${branch} am Anfang um mit ihm zu schreiben`, true);
         embed.addField("Musik Commands", "play\nskip\nstop\nclear\nqueue", true);
-        embed.addField("Mod Commands", "kick\nban", true);
+        embed.addField("Mod Commands", "kick\nban\nmute\nunmute", true);
     
     
         embed.setFooter(`${branch} von JPlexer und der #DarknessCrew ${botver}`);
@@ -109,7 +110,7 @@ client.on('message', message => {
     .setDescription("~Kick~")
     .setColor("#00FFFB")
     .addField("Gekickter User", `${kUser} mit der ID ${kUser.id}`)
-    .addField("Gehickt von", `<@${message.author.id}> mit der ID ${message.author.id}`)
+    .addField("Gekickt von", `<@${message.author.id}> mit der ID ${message.author.id}`)
     .addField("Gekicket in", message.channel)
     .addField("Zeit", message.createdAt)
     .addField("Grund", kReason);
@@ -146,6 +147,55 @@ client.on('message', message => {
 
 
 return;
+
+}else if (lc.startsWith(`${prefix}mute`)) {
+
+    var mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!mUser) return message.channel.send("Can't find user!");
+    var mReason = args2.join(" ").slice(22);
+    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(mUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
+
+    var muteEmbed = new Discord.RichEmbed()
+    .setDescription("~Kick~")
+    .setColor("#00FFFB")
+    .addField("Gemuteter User", `${mUser} mit der ID ${mUser.id}`)
+    .addField("Gemutet von", `<@${message.author.id}> mit der ID ${message.author.id}`)
+    .addField("Gemutet in", message.channel)
+    .addField("Zeit", message.createdAt)
+    .addField("Grund", mReason);
+
+    var muteChannel = message.guild.channels.find(`name`, "verwarnungen");
+    if(!muteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
+
+    message.guild.member(mUser).addRole(mute);
+    muteChannel.send(muteEmbed);
+
+    return;
+
+}else if (lc.startsWith(`${prefix}unmute`)) {
+
+    var umUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!umUser) return message.channel.send("Can't find user!");
+    var umReason = args2.join(" ").slice(22);
+    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(umUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
+
+    var umuteEmbed = new Discord.RichEmbed()
+    .setDescription("~Kick~")
+    .setColor("#00FFFB")
+    .addField("Entmuteter User", `${umUser} mit der ID ${umUser.id}`)
+    .addField("Entmutet von", `<@${message.author.id}> mit der ID ${message.author.id}`)
+    .addField("Zeit", message.createdAt)
+    .addField("Grund", umReason);
+
+    var umuteChannel = message.guild.channels.find(`name`, "verwarnungen");
+    if(!umuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
+
+    message.guild.member(umUser).removeRole(mute);
+    umuteChannel.send(umuteEmbed);
+
+    return;
 
 }else if (lc.startsWith(`${prefix}report`)) {
     var rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
