@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.12"
+const botver = "v.0.0.13"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -187,7 +187,7 @@ return;
   let mutetime = args[1];
   if(!mutetime) return message.reply("Du hast keine Zeit angegeben!");
 
-  await(tmUser.addRole(mute));
+  message.guild.member(tmUser).addRole(mute)
   var tmuteEmbed = new Discord.RichEmbed()
   .setDescription("TempMute")
   .setColor("#00FFFB")
