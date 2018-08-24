@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.8"
+const botver = "v.0.0.9"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -54,7 +54,7 @@ client.on('message', message => {
     const messageArray = message.content.split(" ");
     const args2 = messageArray.slice(1);
     const allowedRole = message.guild.roles.find("name", "darkbotadmin");
-    const mute = message.guild.roles.find("name", "muted");
+    const mute = message.guild.roles.get("419836397399179265");
 
     if (!guilds[message.guild.id]) {
         guilds[message.guild.id] = {
