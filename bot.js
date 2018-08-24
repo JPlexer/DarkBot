@@ -53,6 +53,7 @@ client.on('message', message => {
     const args = message.content.split(' ').slice(1).join(" ");
     const messageArray = message.content.split(" ");
     const args2 = messageArray.slice(1);
+    const allowedRole = message.guild.roles.find("name", "darkbotadmin");
 
     if (!guilds[message.guild.id]) {
         guilds[message.guild.id] = {
@@ -97,16 +98,16 @@ client.on('message', message => {
       });
     });
 
-}else if (lc === `${prefix}kick`) {
+}else if (lc.startsWith(`${prefix}kick`)) {
     var kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!kUser) return message.channel.send("Can't find user!");
     var kReason = args2.join(" ").slice(22);
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
-    if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
+    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("No can do pal!");
+    if(kUser.roles.has(allowedRole.id)) return message.channel.send("That person can't be kicked!");
 
     var kickEmbed = new Discord.RichEmbed()
     .setDescription("~Kick~")
-    .setColor("#e56b00")
+    .setColor("#00FFFB")
     .addField("Gekickter User", `${kUser} mit der ID ${kUser.id}`)
     .addField("Gehickt von", `<@${message.author.id}> mit der ID ${message.author.id}`)
     .addField("Gekicket in", message.channel)
@@ -121,16 +122,16 @@ client.on('message', message => {
 
     return;
 
-}else if (lc === `${prefix}ban`) {
+}else if (lc.startsWith(`${prefix}ban`)) {
     var bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Can't find user!");
     var bReason = args2.join(" ").slice(22);
-    if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("No can do pal!");
-    if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
+    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("No can do pal!");
+    if(bUser.roles.has(allowedRole.id)) return message.channel.send("That person can't be kicked!");
 
     var banEmbed = new Discord.RichEmbed()
     .setDescription("~Ban~")
-    .setColor("#bc0000")
+    .setColor("#00FFFB")
     .addField("Gebannter Nutzer", `${bUser} mit der ID ${bUser.id}`)
     .addField("Gebannt Von", `<@${message.author.id}> mit der ID ${message.author.id}`)
     .addField("Gebannt in", message.channel)
@@ -146,14 +147,14 @@ client.on('message', message => {
 
 return;
 
-}else if (lc === `${prefix}report`) {
+}else if (lc.startsWith(`${prefix}report`)) {
     var rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("Couldn't find user.");
     var rreason = args2.join(" ").slice(22);
 
     var reportEmbed = new Discord.RichEmbed()
     .setDescription("Report")
-    .setColor("#15f153")
+    .setColor("#00FFFB")
     .addField("Reporteter User", `${rUser} with ID: ${rUser.id}`)
     .addField("Reportet von", `${message.author} with ID: ${message.author.id}`)
     .addField("Channel", message.channel)
