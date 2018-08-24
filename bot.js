@@ -171,7 +171,7 @@ return;
     var muteChannel = message.guild.channels.find(`name`, "verwarnungen");
     if(!muteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
-    member(mUser).addRole(mute);
+    message.guild.member(mUser).addRole(mute);
     muteChannel.send(muteEmbed);
 
     return;
@@ -192,7 +192,7 @@ return;
     var umuteChannel = message.guild.channels.find(`name`, "verwarnungen");
     if(!umuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
-    member(umUser).removeRole(mute);
+    message.guild.member(umUser).removeRole(mute);
     umuteChannel.send(umuteEmbed);
 
     return;
