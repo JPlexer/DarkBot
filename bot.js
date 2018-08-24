@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.29"
+const botver = "v.0.0.30"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -82,7 +82,7 @@ client.on('message', message => {
         embed.setDescription(`Diese Commands kannst du mit dem ${branch} benutzen. Tippe einfach ${prefix}[command]`);
         embed.addField("Spiel und Spaß Commands", `ping\npong\npizza\nhelp\nsinfo\nreport\nPing ${branch} am Anfang um mit ihm zu schreiben`, true);
         embed.addField("Musik Commands", "play\nskip\nstop\nclear\nqueue", true);
-        embed.addField("Mod Commands", "kick\nban\nmute\nunmute", true);
+        embed.addField("Mod Commands", "kick\nban\nmute\ntempmute\nunmute", true);
     
     
         embed.setFooter(`${branch} von JPlexer und der #DarknessCrew ${botver}`);
@@ -203,6 +203,34 @@ return;
     tmUser.removeRole(mute);
     tmuteChannel.send(`<@${tmUser.id}> wurde Entmutet!`);
 }, ms(mutetime));
+
+}else if (lc.startsWith(`${prefix}tempban`)) {
+
+    var tbUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!tbUser) return message.channel.send("Can't find user!");
+    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(tbUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+
+  let bantime = args2[1];
+  if(!bantime) return message.reply("Du hast keine Zeit angegeben!");
+
+  message.guild.member(tbUser).ban();
+  var tbanEmbed = new Discord.RichEmbed()
+  .setDescription("TempBan")
+  .setColor("#00FFFB")
+  .addField("Geabannter User", `${tmUser} mit der ID ${tmUser.id}`)
+  .addField("Gebannt von", `<@${message.author.id}> mit der ID ${message.author.id}`)
+  .addField("Gebannt in", message.channel)
+  .addField("Zeit", message.createdAt)
+  .addField("Länge", `${ms(ms(bantime))}` );
+
+  var tbanChannel = message.guild.channels.find(`name`, "verwarnungen");
+  if(!tbanChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
+  tbanChannel.send(tbanEmbed);
+  setTimeout(function(){
+    guild.unban(tbuser);
+    tbanChannel.send(`<@${tmUser.id}> wurde Entmutet!`);
+}, ms(bantime));
 
 }else if (lc.startsWith(`${prefix}unmute`)) {
 
