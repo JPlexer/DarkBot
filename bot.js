@@ -175,6 +175,36 @@ return;
     muteChannel.send(muteEmbed);
 
     return;
+}else if (lc.startsWith(`${prefix}tempmute`)) {
+
+    var tmUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!tmUser) return message.channel.send("Can't find user!");
+    var tmReason = args2.join(" ").slice(22);
+    if (tmReason === "") {mReason = "undefiniert"};
+    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(tmUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+
+  let mutetime = args[1];
+  if(!mutetime) return message.reply("Du hast keine Zeit angegeben!");
+
+  await(tmUser.addRole(mute));
+  var tmuteEmbed = new Discord.RichEmbed()
+  .setDescription("TempMute")
+  .setColor("#00FFFB")
+  .addField("Gemuteter User", `${mUser} mit der ID ${mUser.id}`)
+  .addField("Gemutet von", `<@${message.author.id}> mit der ID ${message.author.id}`)
+  .addField("Gemutet in", message.channel)
+  .addField("Zeit", message.createdAt)
+  .addField("Grund", mReason)
+  .addField("Länge", `${ms(ms(mutetime))}` );
+  
+  var tmuteChannel = message.guild.channels.find(`name`, "verwarnungen");
+  if(!tmuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
+  tmuteChannel.send(tmuteEmbed);
+  setTimeout(function(){
+    tmUser.removeRole(mute);
+    tmuteChannel.send(`<@${tmUser.id}> has been unmuted!`);
+}, ms(mutetime));
 
 }else if (lc.startsWith(`${prefix}unmute`)) {
 
