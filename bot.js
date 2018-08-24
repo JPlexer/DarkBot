@@ -98,13 +98,13 @@ client.on('message', message => {
     });
 
 }else if (lc === `${prefix}kick`) {
-    let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    var kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!kUser) return message.channel.send("Can't find user!");
-    let kReason = args2.join(" ").slice(22);
+    var kReason = args2.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
 
-    let kickEmbed = new Discord.RichEmbed()
+    var kickEmbed = new Discord.RichEmbed()
     .setDescription("~Kick~")
     .setColor("#e56b00")
     .addField("Gekickter User", `${kUser} mit der ID ${kUser.id}`)
@@ -113,7 +113,7 @@ client.on('message', message => {
     .addField("Zeit", message.createdAt)
     .addField("Grund", kReason);
 
-    let kickChannel = message.guild.channels.find(`name`, "verwahnungen");
+    var kickChannel = message.guild.channels.find(`name`, "verwahnungen");
     if(!kickChannel) return message.channel.send("Kann den Verwahnungs Channel nicht finden!");
 
     message.guild.member(kUser).kick(kReason);
@@ -122,13 +122,13 @@ client.on('message', message => {
     return;
 
 }else if (lc === `${prefix}ban`) {
-    let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    var bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Can't find user!");
-    let bReason = args2.join(" ").slice(22);
+    var bReason = args2.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("No can do pal!");
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
 
-    let banEmbed = new Discord.RichEmbed()
+    var banEmbed = new Discord.RichEmbed()
     .setDescription("~Ban~")
     .setColor("#bc0000")
     .addField("Gebannter Nutzer", `${bUser} mit der ID ${bUser.id}`)
@@ -137,7 +137,7 @@ client.on('message', message => {
     .addField("Zeit", message.createdAt)
     .addField("Grund", bReason);
 
-    let incidentchannel = message.guild.channels.find(`name`, "verwahnungen");
+    var incidentchannel = message.guild.channels.find(`name`, "verwahnungen");
     if(!incidentchannel) return message.channel.send("Kann den Verwahnungs Channel nicht finden!");
 
     message.guild.member(bUser).ban(bReason);
@@ -147,11 +147,11 @@ client.on('message', message => {
 return;
 
 }else if (lc === `${prefix}report`) {
-    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    var rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("Couldn't find user.");
-    let rreason = args2.join(" ").slice(22);
+    var rreason = args2.join(" ").slice(22);
 
-    let reportEmbed = new Discord.RichEmbed()
+    var reportEmbed = new Discord.RichEmbed()
     .setDescription("Report")
     .setColor("#15f153")
     .addField("Reporteter User", `${rUser} with ID: ${rUser.id}`)
@@ -160,7 +160,7 @@ return;
     .addField("Zeit", message.createdAt)
     .addField("Grund", rreason);
 
-    let reportschannel = message.guild.channels.find(`name`, "reports");
+    var reportschannel = message.guild.channels.find(`name`, "reports");
     if(!reportschannel) return message.channel.send("Kann den Report Channel nicht finden!");
 
 
@@ -170,8 +170,8 @@ return;
 return;
 
 }else if (lc === `${prefix}sinfo`) {
-    let sicon = message.guild.iconURL;
-    let serverembed = new Discord.RichEmbed()
+    var sicon = message.guild.iconURL;
+    var serverembed = new Discord.RichEmbed()
     .setDescription("Server Information")
     .setColor("#15f153")
     .setThumbnail(sicon)
