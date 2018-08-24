@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.0.13"
+const botver = "v.0.0.14"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -179,8 +179,6 @@ return;
 
     var tmUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tmUser) return message.channel.send("Can't find user!");
-    var tmReason = args2.join(" ").slice(22);
-    if (tmReason === "") {tmReason = "undefiniert"};
     if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
     if(tmUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
 
@@ -191,11 +189,10 @@ return;
   var tmuteEmbed = new Discord.RichEmbed()
   .setDescription("TempMute")
   .setColor("#00FFFB")
-  .addField("Gemuteter User", `${mUser} mit der ID ${mUser.id}`)
+  .addField("Gemuteter User", `${tmUser} mit der ID ${tmUser.id}`)
   .addField("Gemutet von", `<@${message.author.id}> mit der ID ${message.author.id}`)
   .addField("Gemutet in", message.channel)
   .addField("Zeit", message.createdAt)
-  .addField("Grund", mReason)
   .addField("Länge", `${ms(ms(mutetime))}` );
 
   var tmuteChannel = message.guild.channels.find(`name`, "verwarnungen");
