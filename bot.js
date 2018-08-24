@@ -75,8 +75,8 @@ client.on('message', message => {
         embed.setColor("#00FFFB");
         embed.setAuthor(`${branch} Help`);
         embed.setDescription(`Diese Commands kannst du mit dem ${branch} benutzen. Tippe einfach ${prefix}[command]`);
-        embed.addField("Fun & Play Commands", `ping\npong\npizza\nhelp\nPing ${branch} at the beginning of a Message to chat with him`, true);
-        embed.addField("Music Commands", "play\nskip\nstop\nclear\nqueue", true);
+        embed.addField("Spiel und Spaß Commands", `ping\npong\npizza\nhelp\nPing ${branch} am Anfang um mit ihm zu schreiben`, true);
+        embed.addField("Musik Commands", "play\nskip\nstop\nclear\nqueue", true);
     
     
         embed.setFooter(`${branch} von JPlexer und der #DarknessCrew ${botver}`);

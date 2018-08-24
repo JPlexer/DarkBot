@@ -1,7 +1,7 @@
 {
-  "name": "whybot",
+  "name": "darkbot",
   "description": "The ultra cool new bot made by JPlexer",
-  "version": "2.2.1",
+  "version": "1.0.0",
   "main": "bot.js",
 
   "scripts": {
