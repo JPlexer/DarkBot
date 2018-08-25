@@ -301,11 +301,11 @@ return;
   var warnEmbed = new Discord.RichEmbed()
   .setDescription("Warnung")
   .setColor("#00FFFB")
-  .addField("Gewarnter User", `${rUser} mit der ID ${rUser.id}`)
+  .addField("Gewarnter User", `${wUser} mit der ID ${wUser.id}`)
   .addField("Gewarnt von", `${message.author} mit der ID ${message.author.id}`)
   .addField("Channel", message.channel)
   .addField("Zeit", time())
-  .addField("Grund", rreason);
+  .addField("Grund", wreason);
 
   var rerportschannel = message.guild.channels.find(`name`, "verwarnungen");
   if(!rerportschannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
