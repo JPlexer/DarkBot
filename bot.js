@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "(";
-const botver = "v.0.1.0"
+const botver = "v.0.1.3"
 const branch = "DarkBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -59,9 +59,6 @@ client.on('message', message => {
     const mute = message.guild.roles.find("name", "dbmuted");
     const time = tinydate('{DD}.{MM}.{YYYY} {HH}:{mm}:{ss}');
 
-
-       
-
     if (!guilds[message.guild.id]) {
         guilds[message.guild.id] = {
           queue: [],
@@ -87,7 +84,7 @@ client.on('message', message => {
         embed.setDescription(`Diese Commands kannst du mit dem ${branch} benutzen. Tippe einfach ${prefix}[command]`);
         embed.addField("Spiel und Spaß Commands", `ping\npong\npizza\nhelp\nsinfo\nreport\nPing ${branch} am Anfang um mit ihm zu schreiben`, true);
         embed.addField("Musik Commands", "play\nskip\nstop\nclear\nqueue", true);
-        embed.addField("Mod Commands", "kick\nban\nmute\ntempmute\nunmute", true);
+        embed.addField("Mod Commands", "kick\nban\ntempban\nmute\ntempmute\nunmute\nwarn", true);
     
     
         embed.setFooter(`${branch} von JPlexer und der #DarknessCrew ${botver}`);
@@ -165,6 +162,13 @@ return;
     if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
     if(mUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
 
+    message.guild.channels.forEach( (channel, id) => {
+      channel.overwritePermissions(mute, {
+        SEND_MESSAGES: false,
+        ADD_REACTIONS: false
+      })
+    });
+
     var muteEmbed = new Discord.RichEmbed()
     .setDescription("Mute")
     .setColor("#00FFFB")
@@ -176,7 +180,7 @@ return;
 
     var muteChannel = message.guild.channels.find(`name`, "verwarnungen");
     if(!muteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
-
+    muteChannel.send(muteEmbed);
     return;
 }else if (lc.startsWith(`${prefix}tempmute`)) {
 
@@ -188,6 +192,12 @@ return;
   let mutetime = args2[1];
   if(!mutetime) return message.reply("Du hast keine Zeit angegeben!");
 
+    message.guild.channels.forEach( (channel, id) => {
+      channel.overwritePermissions(mute, {
+        SEND_MESSAGES: false,
+        ADD_REACTIONS: false
+      })
+    });
   message.guild.member(tmUser).addRole(mute)
   var tmuteEmbed = new Discord.RichEmbed()
   .setDescription("TempMute")
@@ -197,13 +207,6 @@ return;
   .addField("Gemutet in", message.channel)
   .addField("Zeit", time())
   .addField("Länge", `${ms(ms(mutetime))}` );
-
-  message.guild.channels.forEach( (channel, id) => {
-    channel.overwritePermissions(mute, {
-      SEND_MESSAGES: false,
-      ADD_REACTIONS: false
-    })
-  });
 
   var tmuteChannel = message.guild.channels.find(`name`, "verwarnungen");
   if(!tmuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
