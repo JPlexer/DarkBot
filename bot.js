@@ -59,18 +59,8 @@ client.on('message', message => {
     const mute = message.guild.roles.find("name", "dbmuted");
     const time = tinydate('{DD}.{MM}.{YYYY} {HH}:{mm}:{ss}');
 
-    if(!mute){
-      try{
-        message.guild.channels.forEach( (channel, id) => {
-          channel.overwritePermissions(mute, {
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false
-          });
-        });
-      }catch(e){
-        console.log(e.stack);
-      }
-  }
+
+       
 
     if (!guilds[message.guild.id]) {
         guilds[message.guild.id] = {
@@ -187,9 +177,6 @@ return;
     var muteChannel = message.guild.channels.find(`name`, "verwarnungen");
     if(!muteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
-    message.guild.member(mUser).addRole(mute);
-    muteChannel.send(muteEmbed);
-
     return;
 }else if (lc.startsWith(`${prefix}tempmute`)) {
 
@@ -210,6 +197,13 @@ return;
   .addField("Gemutet in", message.channel)
   .addField("Zeit", time())
   .addField("Länge", `${ms(ms(mutetime))}` );
+
+  message.guild.channels.forEach( (channel, id) => {
+    channel.overwritePermissions(mute, {
+      SEND_MESSAGES: false,
+      ADD_REACTIONS: false
+    })
+  });
 
   var tmuteChannel = message.guild.channels.find(`name`, "verwarnungen");
   if(!tmuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
