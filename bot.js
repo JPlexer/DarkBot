@@ -61,12 +61,7 @@ client.on('message', message => {
 
     if(!mute){
       try{
-        mute = message.guild.createRole({
-          name: "dbmuted",
-          color: "#000000",
-          permissions:[]
-        })
-        message.guild.channels.forEach(async (channel, id) => {
+        message.guild.channels.forEach( (channel, id) => {
           channel.overwritePermissions(mute, {
             SEND_MESSAGES: false,
             ADD_REACTIONS: false
@@ -311,7 +306,6 @@ return;
   if(!rerportschannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
 
-  message.delete().catch(O_o=>{});
   rerportschannel.send(warnEmbed);
 
 return;
