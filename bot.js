@@ -56,8 +56,26 @@ client.on('message', message => {
     const messageArray = message.content.split(" ");
     const args2 = messageArray.slice(1);
     const allowedRole = message.guild.roles.find("name", "darkbotadmin");
-    const mute = message.guild.roles.get("419836397399179265");
+    const mute = message.guild.roles.find("name", "dbmuted");
     const time = tinydate('{DD}.{MM}.{YYYY} {HH}:{mm}:{ss}');
+
+    if(!mute){
+      try{
+        mute = message.guild.createRole({
+          name: "dbmuted",
+          color: "#000000",
+          permissions:[]
+        })
+        message.guild.channels.forEach(async (channel, id) => {
+          channel.overwritePermissions(mute, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false
+          });
+        });
+      }catch(e){
+        console.log(e.stack);
+      }
+  }
 
     if (!guilds[message.guild.id]) {
         guilds[message.guild.id] = {
@@ -211,7 +229,7 @@ return;
     var tbUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tbUser) return message.channel.send("Can't find user!");
     if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
-    if(tbUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+    if(tbUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
 
   let bantime = args2[1];
   if(!bantime) return message.reply("Du hast keine Zeit angegeben!");
@@ -269,6 +287,32 @@ return;
 
     message.delete().catch(O_o=>{});
     reportschannel.send(reportEmbed);
+
+return;
+
+}else if (lc.startsWith(`${prefix}warn`)) {
+  var wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!wUser) return message.channel.send("Couldn't find user.");
+  if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
+  if(wUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gewarnt werden!");
+  var wreason = args2.join(" ").slice(22);
+  if (wreason === "") {wreason = "undefiniert"};
+
+  var warnEmbed = new Discord.RichEmbed()
+  .setDescription("Warnung")
+  .setColor("#00FFFB")
+  .addField("Gewarnter User", `${rUser} mit der ID ${rUser.id}`)
+  .addField("Gewarnt von", `${message.author} mit der ID ${message.author.id}`)
+  .addField("Channel", message.channel)
+  .addField("Zeit", time())
+  .addField("Grund", rreason);
+
+  var rerportschannel = message.guild.channels.find(`name`, "verwarnungen");
+  if(!rerportschannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
+
+
+  message.delete().catch(O_o=>{});
+  rerportschannel.send(warnEmbed);
 
 return;
 
