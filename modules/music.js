@@ -8,8 +8,8 @@ module.exports = {
   play: function (message, guilds, args) {
     if (message.member.voiceChannel || guilds[message.guild.id].voiceChannel != null) {
       if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlaying) {
-        this.getID(args, id => {
-          this.add_to_queue(id, message, guilds);
+        module.exports.getID(args, id => {
+          module.exports.add_to_queue(id, message, guilds);
           fetchVideoInfo(id, (err, {
             title
           }) => {
@@ -20,9 +20,9 @@ module.exports = {
         });
       } else {
         isPlaying = true;
-        this.getID(args, id => {
+        module.exports.getID(args, id => {
           guilds[message.guild.id].queue.push(id);
-          this.playMusic(id, message, guilds);
+          module.exports.playMusic(id, message, guilds);
           fetchVideoInfo(id, (err, {
             title
           }) => {
@@ -40,7 +40,7 @@ module.exports = {
   skip: function (message, guilds) {
     if (!guilds[message.guild.id].skippers.includes(message.author.id)) {
       guilds[message.guild.id].skippers.push(message.author.id);
-        this.skip_song(message);
+        module.exports.skip_song(message);
         message.reply(" dein Skip wurde angennommen! Skippe jetzt!");
       }
   },
@@ -99,7 +99,7 @@ module.exports = {
           guilds[message.guild.id].voiceChannel.leave();
         } else {
           setTimeout(() => {
-            this.playMusic(guilds[message.guild.id].queue[0], message, guilds);
+            module.exports.playMusic(guilds[message.guild.id].queue[0], message, guilds);
           }, 500)
         }
       })
@@ -107,17 +107,17 @@ module.exports = {
   },
 
   getID: function (str, cb) {
-    if (this.isYoutube(str)) {
+    if (module.exports.isYoutube(str)) {
       cb(getYouTubeID(str));
     } else {
-      this.search_video(str, id => {
+      module.exports.search_video(str, id => {
         cb(id);
       });
     }
   },
 
   add_to_queue: function (id, message, guilds) {
-    if (this.isYoutube(id)) {
+    if (module.exports.isYoutube(id)) {
       guilds[message.guild.id].queue.push(getYoutubeID(id));
     } else {
       guilds[message.guild.id].queue.push(id);
