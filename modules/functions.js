@@ -25,7 +25,7 @@ module.exports = {
         type: "PLAYING"
       });
   },
-  prefix: "why?",
-  botver: "v.3.0.0",
-  branch: "WhyBot",
+  prefix: "(",
+  botver: "v.0.1.4",
+  branch: "DarkBot",
 }
