@@ -67,7 +67,7 @@ return;
         ADD_REACTIONS: false
       })
     });
-    message.guild.member(tmUser).addRole(mute)
+    message.guild.member(mUser).addRole(mute)
     var muteEmbed = new Discord.RichEmbed()
     .setDescription("Mute")
     .setColor("#00FFFB")
