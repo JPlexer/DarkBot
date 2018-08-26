@@ -18,10 +18,10 @@ module.exports = {
         "mit der DarknessCrew",
         "JPlexer nerfen",
         "Dark Kid_HD nerfen",
-        `${prefix}help`,
-        `${botver}`,
-        `${botver}`,
-        `${prefix}help`), {
+        `${this.prefix}help`,
+        `${this.botver}`,
+        `${this.botver}`,
+        `${this.prefix}help`), {
         type: "PLAYING"
       });
   },
