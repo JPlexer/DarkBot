@@ -11,7 +11,7 @@ module.exports = {
         embed = new Discord.RichEmbed();
         embed.setColor("#00FFFB");
         embed.setAuthor(`${functions.branch} Hilfe`);
-        embed.setDescription(`Diese Commands kannst du mit dem ${functions.branch} benutzen. Tippe einfach ${functions.prefix}[command]`);
+        embed.setDescription(`Diese Commands kannst du mit dem ${functions.branch} benutzen. Tippe einfach ${functions.prefix}[command] Für Hilfe bei einem Bestimmten Command gib ${functions.prefix}help [command] ein`);
         embed.addField("Spiel und Spaß Commands", `ping\npong\npizza\nhelp\nsinfo\nreport\nPing ${functions.branch} am Anfang um mit ihm zu schreiben`, true);
         embed.addField("Musik Commands", "play\nskip\nstop\nclear\nqueue", true);
         embed.addField("Mod Commands", "kick\nban\ntempban\nmute\ntempmute\nunmute\nwarn", true);

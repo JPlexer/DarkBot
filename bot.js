@@ -130,7 +130,7 @@ client.on('message', message => {
     cmdhelp.helpplay(message);
 
   } else if (lc.startsWith(`${prefix}skip`)) {
-    music.skip(message, guilds);
+    music.skip(message, guilds, id);
 
   }else if (lc.startsWith(`${prefix}help skip`)){
     cmdhelp.helpskip(message);

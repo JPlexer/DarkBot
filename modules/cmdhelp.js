@@ -7,6 +7,7 @@ module.exports = {
         embed.setColor("#00FFFB");
         embed.setAuthor(`Ping Hilfe`);
         embed.setDescription(`Sendet dir eine nette Nachricht`);
+        embed.addField("Benutzung", `(ping`, true);
         embed.setFooter(`${functions.branch} von JPlexer und der #DarknessCrew ${functions.botver}`);
         message.channel.send("", {
           embed
@@ -18,6 +19,7 @@ module.exports = {
         embed.setColor("#00FFFB");
         embed.setAuthor(`Pong Help`);
         embed.setDescription(`Sendet dir eine nette Nachricht`);
+        embed.addField("Benutzung", `(pong`, true);
         embed.setFooter(`${functions.branch} von JPlexer und der #DarknessCrew ${functions.botver}`);
         message.channel.send("", {
           embed
@@ -29,6 +31,7 @@ module.exports = {
         embed.setColor("#00FFFB");
         embed.setAuthor(`Pizza Hilfe`);
         embed.setDescription(`Gibt dir eine Pizza`);
+        embed.addField("Benutzung", `(pizza`, true);
         embed.setFooter(`${functions.branch} von JPlexer und der #DarknessCrew ${functions.botver}`);
         message.channel.send("", {
           embed
