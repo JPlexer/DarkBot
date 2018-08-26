@@ -14,14 +14,14 @@ module.exports = {
     }
   },
   setGame: function (client) {
-      client.user.setActivity(this.getRandom(
+      client.user.setActivity(module.exports.getRandom(
         "mit der DarknessCrew",
         "JPlexer nerfen",
         "Dark Kid_HD nerfen",
-        `${this.prefix}help`,
-        `${this.botver}`,
-        `${this.botver}`,
-        `${this.prefix}help`), {
+        `${module.exports.prefix}help`,
+        `${module.exports.botver}`,
+        `${module.exports.botver}`,
+        `${module.exports.prefix}help`), {
         type: "PLAYING"
       });
   },
