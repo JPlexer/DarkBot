@@ -5,6 +5,7 @@ const tinydate = require('tinydate');
 const cmdhelp = require("./modules/cmdhelp.js")
 const func = require("./modules/functions.js")
 const prefix = func.prefix;
+const setGamef = func.setGame;
 const usef = require("./modules/useful.js")
 const nousef = require("./modules/nouseful.js")
 const eval = require("./modules/evil.js")
