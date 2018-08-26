@@ -17,7 +17,7 @@ module.exports = {
       client.user.setActivity(module.exports.getRandom(
         "mit der DarknessCrew",
         "JPlexer nerfen",
-        "Dark Kid_HD nerfen",
+        "DetektivDark nerfen",
         `${module.exports.prefix}help`,
         `${module.exports.botver}`,
         `${module.exports.botver}`,
