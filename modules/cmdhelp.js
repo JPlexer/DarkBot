@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const functions = require("./functions.js")
 module.exports = {
     helpping: function (message) {
         embed = new Discord.RichEmbed();
