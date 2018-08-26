@@ -40,7 +40,7 @@ module.exports = {
   skip: function (message, guilds) {
     if (!guilds[message.guild.id].skippers.includes(message.author.id)) {
       guilds[message.guild.id].skippers.push(message.author.id);
-        this.skip_song(message, id);
+        this.skip_song(message);
         message.reply(" dein Skip wurde angennommen! Skippe jetzt!");
       }
   },
@@ -71,7 +71,7 @@ module.exports = {
     guilds[message.guild.id].queueNames = [guilds[message.guild.id].queueNames.slice(0, 1)];
     message.reply(" die Warteschlange wurde gereinigt!");
   },
-  skip_song: function (message, guilds, id) {
+  skip_song: function (message, guilds) {
     guilds[message.guild.id].dispatcher.end();
   },
 
