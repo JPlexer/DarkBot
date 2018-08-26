@@ -71,7 +71,7 @@ module.exports = {
     guilds[message.guild.id].queueNames = [guilds[message.guild.id].queueNames.slice(0, 1)];
     message.reply(" die Warteschlange wurde gereinigt!");
   },
-  skip_song: function (message, guilds, id) {
+  skip_song: function (message, guilds) {
     guilds[message.guild.id].dispatcher.end();
   },
 
