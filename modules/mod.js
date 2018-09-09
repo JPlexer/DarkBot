@@ -190,8 +190,8 @@ return;
         var warnEmbed = new Discord.RichEmbed()
         .setDescription("Warnung")
         .setColor("#00FFFB")
-        .addField("Gewarnter User", `${wUser} mit der ID ${wUser.id}`)
-        .addField("Gewarnt von", `${message.author} mit der ID ${message.author.id}`)
+        .addField("Verwarnter User", `${wUser} mit der ID ${wUser.id}`)
+        .addField("Verwarnt von", `${message.author} mit der ID ${message.author.id}`)
         .addField("Channel", message.channel)
         .addField("Zeit", time())
         .addField("Grund", wreason);

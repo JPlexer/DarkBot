@@ -11,6 +11,7 @@ const nousef = require("./modules/nouseful.js")
 const eval = require("./modules/evil.js")
 const music = require("./modules/music.js")
 const mod = require("./modules/mod.js")
+const wiki = require('wikijs').default
 
 client.on('ready', () => {
   console.log('Ready!')
@@ -48,6 +49,10 @@ client.on('message', message => {
   }else if (lc.startsWith(`${prefix}help ping`)){
     cmdhelp.helpping(message);
 
+  }else if (lc.startsWith(`${prefix}wiki`)){
+    wiki({ apiUrl: 'https://de.wikipedia.org/w/api.php' }).page(args)
+    .then(message.channel.send);
+    
   } else if (lc.startsWith(`${prefix}pong`)) {
     nousef.pong(message);
 

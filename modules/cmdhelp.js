@@ -133,7 +133,7 @@ module.exports = {
         embed = new Discord.RichEmbed();
         embed.setColor("#00FFFB");
         embed.setAuthor(`Warn Hilfe`);
-        embed.setDescription(`Warnt einen User (Nur für Mods)`);
+        embed.setDescription(`Verwarnt einen User (Nur für Mods)`);
         embed.addField("Benutzung", `(warn @JPlexer Spam`, true);
 
         embed.setFooter(`${functions.branch} von JPlexer und der #DarknessCrew ${functions.botver}`);

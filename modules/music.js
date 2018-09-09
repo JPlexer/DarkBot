@@ -39,7 +39,7 @@ module.exports = {
   },
   skip: function (message, guilds) {
         this.skip_song(message, guilds);
-        message.reply(" your skip has been acknowledged. Skipping now");
+        message.reply(" Dein Skip wurde angenommen.... Skippe Jetzt!");
   },
   queue: function (message, guilds) {
     let message2 = "```";
