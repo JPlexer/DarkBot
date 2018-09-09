@@ -33,7 +33,7 @@ module.exports = {
     clstart: function () {
         clbot.setNick(`${functions.branch}`);
     },
-    purge: function(message, args) {
+    purge: function(message, args2) {
         function purgg(){
         message.delete();
 
@@ -43,7 +43,7 @@ module.exports = {
         }
 
 
-        if (isNaN(args[0])) {
+        if (isNaN(args2[0])) {
                 message.channel.send(`Bitte sage wieviele Nachrichten du löschen möchtest. \n Zum Beispiel: ${functions.prefix}purge 6 löscht 6 Nachrichten`);
        return;
         }

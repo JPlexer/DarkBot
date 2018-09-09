@@ -64,7 +64,7 @@ client.on('message', message => {
     cmdhelp.helppizza(message);
 
   } else if (lc.startsWith(`${prefix}purge`)) {
-    usef.purge(message);
+    usef.purge(message, args2);
 
   }else if (lc.startsWith(`${prefix}help purge`)){
     cmdhelp.helppurge(message);
