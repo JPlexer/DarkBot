@@ -33,7 +33,7 @@ module.exports = {
     clstart: function () {
         clbot.setNick(`${functions.branch}`);
     },
-    purge: function(message) {
+    purge: function(message, args3) {
         message.delete();
         if (!message.member.roles.find("name", "darkbotadmin")) { 
             message.channel.send('Das kannst du nicht machen!');
