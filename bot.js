@@ -51,6 +51,7 @@ client.on('message', message => {
 
   }else if (lc.startsWith(`${prefix}wiki`)){
     wiki({ apiUrl: 'https://de.wikipedia.org/w/api.php' }).page(args)
+    .then(page => page.info())
     .then(console.log);
 
   } else if (lc.startsWith(`${prefix}pong`)) {
