@@ -18,7 +18,6 @@
     "cleverbot.io": "^1.0.4",
     "ytdl-core": "^0.21.1",
     "ms": "^2.1.1",
-    "weather-js": "^4.8.1",
     "tinydate": "^1.0.0"
   }
 }
