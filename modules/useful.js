@@ -48,7 +48,7 @@ module.exports = {
        return;
         }
 
-        const fetched = message.channel.fetchMessages({limit: args[0]});
+        const fetched = message.channel.fetchMessages({limit: args2[0]});
 
         message.channel.bulkDelete(fetched)
             .catch(error => message.channel.send(`Error: ${error}`));
