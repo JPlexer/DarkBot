@@ -47,7 +47,7 @@ module.exports = {
        return;
         }
 
-        message.channel.bulkDelete(args)
+        message.channel.bulkDelete(args2)
             .catch(error => message.channel.send(`Error: ${error}`));
 
 }
