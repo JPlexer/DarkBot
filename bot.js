@@ -26,6 +26,7 @@ client.on('message', message => {
   const lc = message.content.toLowerCase();
   const args = message.content.split(' ').slice(1).join(" ");
   const args2 = message.content.split(' ').slice(1);
+  const args3 = message.content.slice(prefix.length).split(' ').slice(1);
   const allowedRole = message.guild.roles.find("name", "darkbotadmin");
   const mute = message.guild.roles.find("name", "dbmuted");
   const time = tinydate('{DD}.{MM}.{YYYY} {HH}:{mm}:{ss}');
@@ -64,7 +65,7 @@ client.on('message', message => {
     cmdhelp.helppizza(message);
 
   } else if (lc.startsWith(`${prefix}purge`)) {
-    usef.purge(message, args2);
+    usef.purge(message, args3);
 
   }else if (lc.startsWith(`${prefix}help purge`)){
     cmdhelp.helppurge(message);

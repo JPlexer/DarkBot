@@ -33,22 +33,18 @@ module.exports = {
     clstart: function () {
         clbot.setNick(`${functions.branch}`);
     },
-    purge: function(message, args2) {
+    purge: function(message) {
         message.delete();
-
         if (!message.member.roles.find("name", "darkbotadmin")) { 
             message.channel.send('Das kannst du nicht machen!');
             return;
         }
-
-
-        if (isNaN(args2[0])) {
+        if (isNaN(args3[0])) {
                 message.channel.send(`Bitte sage wieviele Nachrichten du löschen möchtest. \n Zum Beispiel: ${functions.prefix}purge 6 löscht 6 Nachrichten`);
        return;
         }
-
-        message.channel.bulkDelete(args2)
+        const fetched = message.channel.fetchMessages({limit: args3[0]});
+        message.channel.bulkDelete(fetched)
             .catch(error => message.channel.send(`Error: ${error}`));
-
 }
 }
