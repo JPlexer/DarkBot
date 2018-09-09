@@ -116,6 +116,19 @@ module.exports = {
         });
         return true;
     },
+    helppurge: function (message) {
+        embed = new Discord.RichEmbed();
+        embed.setColor("#00FFFB");
+        embed.setAuthor(`Purge Hilfe`);
+        embed.setDescription(`Löscht mehrere Nachrichten (Nur für Mods)`);
+        embed.addField("Benutzung", `(purge 6, (purge 8, (purge 21`, true);
+
+        embed.setFooter(`${functions.branch} von JPlexer und der #DarknessCrew ${functions.botver}`);
+        message.channel.send("", {
+          embed
+        });
+        return true;
+    },
     helpreport: function (message) {
         embed = new Discord.RichEmbed();
         embed.setColor("#00FFFB");

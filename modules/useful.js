@@ -23,9 +23,9 @@ module.exports = {
         });
         return true;
     },
-    clev: function (message) {
+    clev: function (message, args) {
         clbot.create((err, session) => {
-            clbot.ask(message.content, (err, response) => {
+            clbot.ask(args, (err, response) => {
                 message.channel.send(response)
             });
         });
@@ -33,4 +33,29 @@ module.exports = {
     clstart: function () {
         clbot.setNick(`${functions.branch}`);
     },
+    purge: function(message) {
+        function purgg(){
+        message.delete();
+
+        if (!message.member.roles.find("name", "darkbotadmin")) { 
+            message.channel.send('Das kannst du nicht machen!');
+            return;
+        }
+
+
+        if (isNaN(args[0])) {
+                message.channel.send(`Bitte sage wieviele Nachrichten du löschen möchtest. \n Zum Beispiel: ${functions.prefix}purge 6 löscht 6 Nachrichten`);
+       return;
+        }
+
+        const fetched = await message.channel.fetchMessages({limit: args[0]});
+
+        message.channel.bulkDelete(fetched)
+            .catch(error => message.channel.send(`Error: ${error}`));
+
+    }
+
+    purgg();
+
+}
 }
