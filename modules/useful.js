@@ -14,7 +14,7 @@ module.exports = {
         embed.setDescription(`Diese Commands kannst du mit dem ${functions.branch} benutzen. Tippe einfach ${functions.prefix}[command]! Für Hilfe bei einem Bestimmten Command gib ${functions.prefix}help [command] ein`);
         embed.addField("Spiel und Spaß Commands", `ping\npong\npizza\nhelp\nsinfo\nreport\nPing ${functions.branch} am Anfang um mit ihm zu schreiben`, true);
         embed.addField("Musik Commands", "play\nskip\nstop\nclear\nqueue", true);
-        embed.addField("Mod Commands", "kick\nban\ntempban\nmute\ntempmute\nunmute\nwarn", true);
+        embed.addField("Mod Commands", "kick\nban\ntempban\nmute\ntempmute\nunmute\nwarn\npurge", true);
     
     
         embed.setFooter(`${functions.branch} von JPlexer und der #DarknessCrew ${functions.botver}`);
@@ -33,7 +33,7 @@ module.exports = {
     clstart: function () {
         clbot.setNick(`${functions.branch}`);
     },
-    purge: function(message) {
+    purge: function(message, args) {
         function purgg(){
         message.delete();
 
