@@ -33,7 +33,7 @@ module.exports = {
     clstart: function () {
         clbot.setNick(`${functions.branch}`);
     },
-    purge: function(message, args2) {
+    purge: async function(message, args2) {
         message.delete();
         if (!message.member.roles.find("name", "darkbotadmin")) { 
             message.channel.send('Das kannst du nicht machen!');
@@ -43,7 +43,7 @@ module.exports = {
                 message.channel.send(`Bitte sage wieviele Nachrichten du löschen möchtest. \n Zum Beispiel: ${functions.prefix}purge 6 löscht 6 Nachrichten`);
        return;
         }
-        const fetched = message.channel.fetchMessages({limit: args2[0]});
+        const fetched = await message.channel.fetchMessages({limit: args2[0]});
         console.log(fetched)
         console.log(args2)
         message.channel.bulkDelete(fetched)
