@@ -34,7 +34,6 @@ module.exports = {
         clbot.setNick(`${functions.branch}`);
     },
     purge: function(message, args2) {
-        function purgg(){
         message.delete();
 
         if (!message.member.roles.find("name", "darkbotadmin")) { 
@@ -52,10 +51,6 @@ module.exports = {
 
         message.channel.bulkDelete(fetched)
             .catch(error => message.channel.send(`Error: ${error}`));
-
-    }
-
-    purgg();
 
 }
 }
