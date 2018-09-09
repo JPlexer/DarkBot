@@ -51,8 +51,8 @@ client.on('message', message => {
 
   }else if (lc.startsWith(`${prefix}wiki`)){
     wiki({ apiUrl: 'https://de.wikipedia.org/w/api.php' }).page(args)
-    .then(message.channel.send);
-    
+    .then(console.log);
+
   } else if (lc.startsWith(`${prefix}pong`)) {
     nousef.pong(message);
 
