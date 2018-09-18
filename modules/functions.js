@@ -15,9 +15,11 @@ module.exports = {
   },
   setGame: function (client) {
       client.user.setActivity(module.exports.getRandom(
-        "mit der DarknessCrew",
+        "in der DarknessWorld",
         "JPlexer nerfen",
         "DetektivDark nerfen",
+        "Fan von Iggy nerfen",
+        "mit dir und den Anderen Usern",
         `${module.exports.prefix}help`,
         `${module.exports.botver}`,
         `${module.exports.botver}`,
@@ -26,6 +28,6 @@ module.exports = {
       });
   },
   prefix: "(",
-  botver: "v.1.3.0",
+  botver: "b.2.0.0",
   branch: "DarkBot",
 }

@@ -17,7 +17,7 @@ module.exports = {
         embed.addField("Mod Commands", "kick\nban\ntempban\nmute\ntempmute\nunmute\nwarn\npurge", true);
     
     
-        embed.setFooter(`${functions.branch} von JPlexer und der #DarknessCrew ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
         message.channel.send("", {
           embed
         });
@@ -35,7 +35,7 @@ module.exports = {
     },
     purge: async function(message, args2) {
         message.delete();
-        if (!message.member.roles.find("name", "darkbotadmin")) { 
+        if (!message.member.roles.find("name", "admin") || !message.member.roles.find("name", "mod" )) { 
             message.channel.send('Das kannst du nicht machen!');
             return;
         }

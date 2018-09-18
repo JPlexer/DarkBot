@@ -2,13 +2,15 @@ const ms = require("ms");
 const Discord = require('discord.js');
 const client = new Discord.Client();
 module.exports = {
-    kick: function(message, args2, time, allowedRole){
+    kick: function(message, args2, time, mod, admin){
     var kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!kUser) return message.channel.send("Can't find user!");
     var kReason = args2.join(" ").slice(22);
     if (kReason === "") {kReason = "undefiniert"};
-    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
-    if(kUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gekickt werden!");
+    if(!message.member.roles.has(mod.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(kUser.roles.has(mod.id)) return message.channel.send("Die Person kann nicht gekickt werden!");
+    if(!message.member.roles.has(admin.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(kUser.roles.has(admin.id)) return message.channel.send("Die Person kann nicht gekickt werden!");
 
     var kickEmbed = new Discord.RichEmbed()
     .setDescription("Kick")
@@ -27,13 +29,13 @@ module.exports = {
 
     return;
     },
-    ban: function(message, args2, time, allowedRole){
+    ban: function(message, args2, time, admin){
         var bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Can't find user!");
     var bReason = args2.join(" ").slice(22);
     if (bReason === "") {bReason = "undefiniert"};
-    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
-    if(bUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
+    if(!message.member.roles.has(admin.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(bUser.roles.has(admin.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
 
     var banEmbed = new Discord.RichEmbed()
     .setDescription("Ban")
@@ -53,13 +55,20 @@ module.exports = {
 
 return;
     },
-    mute: function(message, args2, time, allowedRole, mute){
+    mute: function(message, args2, time,  mod, dbmuter, dbmuter2, dbmuter3, mute){
         var mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!mUser) return message.channel.send("Can't find user!");
     var mReason = args2.join(" ").slice(22);
     if (mReason === "") {mReason = "undefiniert"};
-    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
-    if(mUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+    if(!message.member.roles.has(dbmuter3.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(!message.member.roles.has(dbmuter2.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(!message.member.roles.has(dbmuter.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(!message.member.roles.has(mod.id)) return message.channel.send("Du kannst das nicht machen!");
+    
+    if(mUser.roles.has(mod.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+    if(mUser.roles.has(dbmuter3.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+    if(mUser.roles.has(dbmuter2.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+    if(mUser.roles.has(dbmuter.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
 
     message.guild.channels.forEach( (channel, id) => {
       channel.overwritePermissions(mute, {
@@ -82,11 +91,19 @@ return;
     muteChannel.send(muteEmbed);
     return;
     },
-    tempmute: function(message, args2, time, allowedRole, mute){
+    tempmute: function(message, args2, time,  mod, dbmuter, dbmuter2, dbmuter3, mute){
         var tmUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tmUser) return message.channel.send("Can't find user!");
-    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
-    if(tmUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+    if(!message.member.roles.has(dbmuter3.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(!message.member.roles.has(dbmuter2.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(!message.member.roles.has(dbmuter.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(!message.member.roles.has(mod.id)) return message.channel.send("Du kannst das nicht machen!");
+    
+    if(tmUser.roles.has(mod.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+    if(tmUser.roles.has(dbmuter.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+    if(tmUser.roles.has(dbmuter2.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+    if(tmUser.roles.has(dbmuter3.id)) return message.channel.send("Die Person kann nicht gemutet werden!");
+    
 
   let mutetime = args2[1];
   if(!mutetime) return message.reply("Du hast keine Zeit angegeben!");
@@ -115,11 +132,11 @@ return;
     tmuteChannel.send(`<@${tmUser.id}> wurde Entmutet!`);
 }, ms(mutetime));
     },
-    tempban: function(message, args2, time, allowedRole){
+    tempban: function(message, args2, time, admin){
         var tbUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!tbUser) return message.channel.send("Can't find user!");
-    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
-    if(tbUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
+    if(!message.member.roles.has(admin.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(tbUser.roles.has(admin.id)) return message.channel.send("Die Person kann nicht gebannt werden!");
 
   let bantime = args2[1];
   if(!bantime) return message.reply("Du hast keine Zeit angegeben!");
@@ -142,11 +159,13 @@ return;
     tbanChannel.send(`<@${tbUser.id}> wurde Entbannt!`);
 }, ms(bantime));
     },
-    unmute: function(message, allowedRole, mute){
+    unmute: function(message, mod, dbmuter, dbmuter2, dbmuter3, mute){
         var umUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!umUser) return message.channel.send("Can't find user!");
-    if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
-
+    if(!message.member.roles.has(dbmuter3.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(!message.member.roles.has(dbmuter2.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(!message.member.roles.has(dbmuter.id)) return message.channel.send("Du kannst das nicht machen!");
+    if(!message.member.roles.has(mod.id)) return message.channel.send("Du kannst das nicht machen!");
     var umuteChannel = message.guild.channels.find(`name`, "verwarnungen");
     if(!umuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
@@ -179,11 +198,11 @@ return;
     
     return;
     },
-    warn: function(message, args2, time, allowedRole){
+    warn: function(message, args2, time, mod){
         var wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!wUser) return message.channel.send("Couldn't find user.");
-        if(!message.member.roles.has(allowedRole.id)) return message.channel.send("Du kannst das nicht machen!");
-        if(wUser.roles.has(allowedRole.id)) return message.channel.send("Die Person kann nicht gewarnt werden!");
+        if(!message.member.roles.has(mod.id)) return message.channel.send("Du kannst das nicht machen!");
+        if(wUser.roles.has(mod.id)) return message.channel.send("Die Person kann nicht gewarnt werden!");
         var wreason = args2.join(" ").slice(22);
         if (wreason === "") {wreason = "undefiniert"};
       

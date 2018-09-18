@@ -26,7 +26,11 @@ client.on('message', message => {
   const lc = message.content.toLowerCase();
   const args = message.content.split(' ').slice(1).join(" ");
   const args2 = message.content.split(' ').slice(1);
-  const allowedRole = message.guild.roles.find("name", "darkbotadmin");
+  const dbmuter = message.guild.roles.find("name", "ice");
+  const dbmuter2 = message.guild.roles.find("name", "omega");
+  const dbmuter3 = message.guild.roles.find("name", "blockbuster");
+  const modd = message.guild.roles.find("name", "moderator");
+  const admin = message.guild.roles.find("name", "admin");
   const mute = message.guild.roles.find("name", "dbmuted");
   const time = tinydate('{DD}.{MM}.{YYYY} {HH}:{mm}:{ss}');
 
@@ -76,37 +80,37 @@ client.on('message', message => {
     eval(client, message, args2);
 
   } else if (lc.startsWith(`${prefix}kick`)) {
-    mod.kick(message, args2, time, allowedRole);
+    mod.kick(message, args2, time, modd, admin);
 
   }else if (lc.startsWith(`${prefix}help kick`)){
     cmdhelp.helpkick(message);
 
   } else if (lc.startsWith(`${prefix}ban`)) {
-    mod.ban(message, args2, time, allowedRole);
+    mod.ban(message, args2, time, admin);
 
   }else if (lc.startsWith(`${prefix}help ban`)){
     cmdhelp.helpban(message);
 
   } else if (lc.startsWith(`${prefix}mute`)) {
-    mod.mute(message, args2, time, allowedRole, mute);
+    mod.mute(message, args2, time, modd, dbmuter, dbmuter2, dbmuter3, mute);
 
   }else if (lc.startsWith(`${prefix}help mute`)){
     cmdhelp.helpmute(message);
 
   } else if (lc.startsWith(`${prefix}tempmute`)) {
-    mod.tempmute(message, args2, time, allowedRole, mute);
+    mod.tempmute(message, args2, time, modd, dbmuter, dbmuter2, dbmuter3, mute);
 
   }else if (lc.startsWith(`${prefix}help tempmute`)){
     cmdhelp.helptempmute(message);
 
   } else if (lc.startsWith(`${prefix}tempban`)) {
-    mod.tempban(message, args2, time, allowedRole);
+    mod.tempban(message, args2, time, admin);
 
   }else if (lc.startsWith(`${prefix}help tempban`)){
     cmdhelp.helptempban(message);
 
   } else if (lc.startsWith(`${prefix}unmute`)) {
-    mod.unmute(message, allowedRole, mute);
+    mod.unmute(message, modd, dbmuter, dbmuter2, dbmuter3, mute);
 
   }else if (lc.startsWith(`${prefix}help unmute`)){
     cmdhelp.helpunmute(message);
@@ -118,7 +122,7 @@ client.on('message', message => {
     cmdhelp.helpreport(message);
 
   } else if (lc.startsWith(`${prefix}warn`)) {
-    mod.warn(message, args2, time, allowedRole)
+    mod.warn(message, args2, time, modd)
 
   }else if (lc.startsWith(`${prefix}help warn`)){
     cmdhelp.helpwarn(message);
