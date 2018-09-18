@@ -35,7 +35,7 @@ module.exports = {
     },
     purge: async function(message, args2) {
         message.delete();
-        if (!message.member.roles.find("name", "admin") || !message.member.roles.find("name", "mod" )) { 
+        if (!message.member.roles.find("name", "Admin") || !message.member.roles.find("name", "Mod" )) { 
             message.channel.send('Das kannst du nicht machen!');
             return;
         }

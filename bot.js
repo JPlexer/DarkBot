@@ -26,9 +26,6 @@ client.on('message', message => {
   const lc = message.content.toLowerCase();
   const args = message.content.split(' ').slice(1).join(" ");
   const args2 = message.content.split(' ').slice(1);
-  const dbmuter = message.guild.roles.find("name", "Ice");
-  const dbmuter2 = message.guild.roles.find("name", "Omega");
-  const dbmuter3 = message.guild.roles.find("name", "Blockbuster");
   const modd = message.guild.roles.find("name", "Moderator");
   const admin = message.guild.roles.find("name", "Admin");
   const mute = message.guild.roles.find("name", "dbmuted");
@@ -80,7 +77,7 @@ client.on('message', message => {
     eval(client, message, args2);
 
   } else if (lc.startsWith(`${prefix}kick`)) {
-    mod.kick(message, args2, time, modd, admin);
+    mod.kick(message, args2, time);
 
   }else if (lc.startsWith(`${prefix}help kick`)){
     cmdhelp.helpkick(message);
@@ -92,13 +89,13 @@ client.on('message', message => {
     cmdhelp.helpban(message);
 
   } else if (lc.startsWith(`${prefix}mute`)) {
-    mod.mute(message, args2, time, modd, dbmuter, dbmuter2, dbmuter3, mute);
+    mod.mute(message, args2, time, mute);
 
   }else if (lc.startsWith(`${prefix}help mute`)){
     cmdhelp.helpmute(message);
 
   } else if (lc.startsWith(`${prefix}tempmute`)) {
-    mod.tempmute(message, args2, time, modd, dbmuter, dbmuter2, dbmuter3, mute);
+    mod.tempmute(message, args2, time, mute);
 
   }else if (lc.startsWith(`${prefix}help tempmute`)){
     cmdhelp.helptempmute(message);
@@ -110,7 +107,7 @@ client.on('message', message => {
     cmdhelp.helptempban(message);
 
   } else if (lc.startsWith(`${prefix}unmute`)) {
-    mod.unmute(message, modd, dbmuter, dbmuter2, dbmuter3, mute);
+    mod.unmute(message, mute);
 
   }else if (lc.startsWith(`${prefix}help unmute`)){
     cmdhelp.helpunmute(message);
