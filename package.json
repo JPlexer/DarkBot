@@ -1,14 +1,14 @@
 {
-  "name": "darkbot",
+  "name": "whybot",
   "description": "The ultra cool new bot made by JPlexer",
-  "version": "2.0.0",
+  "version": "2.2.1",
   "main": "bot.js",
 
   "scripts": {
     "start": "node bot.js"
   },
   "dependencies": {
-    "discord.js": "^11.3.2",
+    "discord.js": "11.3.2",
     "request": "2.81.0",
     "youtube-info": "^1.1.1",
     "ffmpeg-binaries": "^3.2.2-3",
@@ -16,9 +16,6 @@
     "get-youtube-id": "^1.0.0",
     "opusscript": "0.0.3",
     "cleverbot.io": "^1.0.4",
-    "ytdl-core": "^0.21.1",
-    "ms": "^2.1.1",
-    "better-sqlite3": "^4.0.2",
-    "tinydate": "^1.0.0"
+    "ytdl-core": "^0.21.1"
   }
 }
