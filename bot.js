@@ -26,11 +26,11 @@ client.on('message', message => {
   const lc = message.content.toLowerCase();
   const args = message.content.split(' ').slice(1).join(" ");
   const args2 = message.content.split(' ').slice(1);
-  const dbmuter = message.guild.roles.find("name", "ice");
-  const dbmuter2 = message.guild.roles.find("name", "omega");
-  const dbmuter3 = message.guild.roles.find("name", "blockbuster");
-  const modd = message.guild.roles.find("name", "moderator");
-  const admin = message.guild.roles.find("name", "admin");
+  const dbmuter = message.guild.roles.find("name", "Ice");
+  const dbmuter2 = message.guild.roles.find("name", "Omega");
+  const dbmuter3 = message.guild.roles.find("name", "Blockbuster");
+  const modd = message.guild.roles.find("name", "Moderator");
+  const admin = message.guild.roles.find("name", "Admin");
   const mute = message.guild.roles.find("name", "dbmuted");
   const time = tinydate('{DD}.{MM}.{YYYY} {HH}:{mm}:{ss}');
 
