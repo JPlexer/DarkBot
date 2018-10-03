@@ -18,6 +18,13 @@
     "cleverbot.io": "^1.0.4",
     "ytdl-core": "^0.21.1",
     "ms": "^2.1.1",
+    "mongodb": "^3.1.6",
+    "mongodb-core": "^3.1.5",
+    "bson": "^3.0.2",
+    "bson-ext": "^2.0.1",
+    "node-gyp": "^3.8.0",
+    "kerberos": "^1.0.0",
+    "assert": "^1.0.0",
     "tinydate": "1.0.0"
   }
 }
