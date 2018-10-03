@@ -44,7 +44,7 @@ module.exports = {
   queue: function (message, guilds) {
     let message2 = "```";
     for (let i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
-      const temp = `${i + 1}: ${guilds[message.guild.id].queueNames[i]}${i === 0? "**(Current Song)***" : ""}\n`;
+      const temp = `${i + 1}: ${guilds[message.guild.id].queueNames[i]}${i === 0? "**(Momentanes Lied)***" : ""}\n`;
       if ((message2 + temp).length <= 2000 - 3) {
         message2 += temp;
       } else if (guilds[message.guild.id].queue.length === 0) {

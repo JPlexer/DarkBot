@@ -28,6 +28,6 @@ module.exports = {
       });
   },
   prefix: "(",
-  botver: "b.2.0.0",
+  botver: "b.2.0.1",
   branch: "DarkBot",
 }

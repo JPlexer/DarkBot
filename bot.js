@@ -12,11 +12,30 @@ const eval = require("./modules/evil.js")
 const music = require("./modules/music.js")
 const mod = require("./modules/mod.js")
 
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+
+const url = process.env.MDB_LOGIN;
+const dbclient = new MongoClient(url);
+
+//dbclient.connect(function(err) {
+  //assert.equal(null, err);
+  //console.log("Connected correctly to server");
+
+  //dbclient.close();
+//});
+
 client.on('ready', () => {
   console.log('Ready!')
   client.setInterval(setGamef, 30000, client);
   setGamef(client);
   usef.clstart();
+  dbclient.connect(function(err) {
+    assert.equal(null, err);
+    console.log("Connected correctly to server");
+  
+    dbclient.close();
+  })
 });
 
 client.login(process.env.BOT_TOKEN);
