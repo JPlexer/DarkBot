@@ -18,7 +18,6 @@ module.exports = {
       "mit der NaiVArmy",
       "JPlexer nerfen",
       "NaiVion nerfen",
-      "Mineyyy nerfen",
       "Fan von Iggy nerfen",
       "mit dir und den Anderen Usern",
       `${module.exports.prefix}help`,
