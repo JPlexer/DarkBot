@@ -12,30 +12,11 @@ const eval = require("./modules/evil.js")
 const music = require("./modules/music.js")
 const mod = require("./modules/mod.js")
 
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
-
-const url = process.env.MDB_LOGIN;
-const dbclient = new MongoClient(url);
-
-//dbclient.connect(function(err) {
-  //assert.equal(null, err);
-  //console.log("Connected correctly to server");
-
-  //dbclient.close();
-//});
-
 client.on('ready', () => {
   console.log('Ready!')
   client.setInterval(setGamef, 30000, client);
   setGamef(client);
   usef.clstart();
-  dbclient.connect(function(err) {
-    assert.equal(null, err);
-    console.log("Connected correctly to server");
-  
-    dbclient.close();
-  })
 });
 
 client.login(process.env.BOT_TOKEN);
@@ -65,13 +46,13 @@ client.on('message', message => {
   if (lc.startsWith(`${prefix}ping`)) {
     usef.ping(message);
 
-  }else if (lc.startsWith(`${prefix}help ping`)){
+  } else if (lc.startsWith(`${prefix}help ping`)) {
     cmdhelp.helpping(message);
 
   } else if (lc.startsWith(`${prefix}pong`)) {
     nousef.pong(message);
 
-  }else if (lc.startsWith(`${prefix}help pong`)){
+  } else if (lc.startsWith(`${prefix}help pong`)) {
     cmdhelp.helppong(message);
 
   } else if (lc === `${prefix}help`) {
@@ -80,13 +61,13 @@ client.on('message', message => {
   } else if (lc.startsWith(`${prefix}pizza`)) {
     nousef.pizza(message);
 
-  }else if (lc.startsWith(`${prefix}help pizza`)){
+  } else if (lc.startsWith(`${prefix}help pizza`)) {
     cmdhelp.helppizza(message);
 
   } else if (lc.startsWith(`${prefix}purge`)) {
     usef.purge(message, args2);
 
-  }else if (lc.startsWith(`${prefix}help purge`)){
+  } else if (lc.startsWith(`${prefix}help purge`)) {
     cmdhelp.helppurge(message);
 
   } else if (message.isMentioned(client.user)) {
@@ -98,85 +79,85 @@ client.on('message', message => {
   } else if (lc.startsWith(`${prefix}kick`)) {
     mod.kick(message, args2, time);
 
-  }else if (lc.startsWith(`${prefix}help kick`)){
+  } else if (lc.startsWith(`${prefix}help kick`)) {
     cmdhelp.helpkick(message);
 
   } else if (lc.startsWith(`${prefix}ban`)) {
     mod.ban(message, args2, time, admin);
 
-  }else if (lc.startsWith(`${prefix}help ban`)){
+  } else if (lc.startsWith(`${prefix}help ban`)) {
     cmdhelp.helpban(message);
 
   } else if (lc.startsWith(`${prefix}mute`)) {
     mod.mute(message, args2, time, mute);
 
-  }else if (lc.startsWith(`${prefix}help mute`)){
+  } else if (lc.startsWith(`${prefix}help mute`)) {
     cmdhelp.helpmute(message);
 
   } else if (lc.startsWith(`${prefix}tempmute`)) {
     mod.tempmute(message, args2, time, mute);
 
-  }else if (lc.startsWith(`${prefix}help tempmute`)){
+  } else if (lc.startsWith(`${prefix}help tempmute`)) {
     cmdhelp.helptempmute(message);
 
   } else if (lc.startsWith(`${prefix}tempban`)) {
     mod.tempban(message, args2, time, admin);
 
-  }else if (lc.startsWith(`${prefix}help tempban`)){
+  } else if (lc.startsWith(`${prefix}help tempban`)) {
     cmdhelp.helptempban(message);
 
   } else if (lc.startsWith(`${prefix}unmute`)) {
     mod.unmute(message, mute);
 
-  }else if (lc.startsWith(`${prefix}help unmute`)){
+  } else if (lc.startsWith(`${prefix}help unmute`)) {
     cmdhelp.helpunmute(message);
 
   } else if (lc.startsWith(`${prefix}report`)) {
     mod.report(message, args2, time);
 
-  }else if (lc.startsWith(`${prefix}help report`)){
+  } else if (lc.startsWith(`${prefix}help report`)) {
     cmdhelp.helpreport(message);
 
   } else if (lc.startsWith(`${prefix}warn`)) {
     mod.warn(message, args2, time, modd)
 
-  }else if (lc.startsWith(`${prefix}help warn`)){
+  } else if (lc.startsWith(`${prefix}help warn`)) {
     cmdhelp.helpwarn(message);
 
   } else if (lc.startsWith(`${prefix}sinfo`)) {
     mod.sinfo(message);
 
-  }else if (lc.startsWith(`${prefix}help sinfo`)){
+  } else if (lc.startsWith(`${prefix}help sinfo`)) {
     cmdhelp.helpsinfo(message);
 
   } else if (lc.startsWith(`${prefix}play`)) {
     music.play(message, guilds, args);
 
-  }else if (lc.startsWith(`${prefix}help play`)){
+  } else if (lc.startsWith(`${prefix}help play`)) {
     cmdhelp.helpplay(message);
 
   } else if (lc.startsWith(`${prefix}skip`)) {
     music.skip(message, guilds);
 
-  }else if (lc.startsWith(`${prefix}help skip`)){
+  } else if (lc.startsWith(`${prefix}help skip`)) {
     cmdhelp.helpskip(message);
 
   } else if (lc.startsWith(`${prefix}queue`)) {
     music.queue(message, guilds);
 
-  }else if (lc.startsWith(`${prefix}help queue`)){
+  } else if (lc.startsWith(`${prefix}help queue`)) {
     cmdhelp.helpqueue(message);
 
   } else if (lc.startsWith(`${prefix}stop`)) {
     music.stop(message, guilds);
 
-  }else if (lc.startsWith(`${prefix}help stop`)){
+  } else if (lc.startsWith(`${prefix}help stop`)) {
     cmdhelp.helpstop(message);
 
   } else if (lc.startsWith(`${prefix}clear`)) {
     music.clear(message, guilds);
 
-  }else if (lc.startsWith(`${prefix}help clear`)){
+  } else if (lc.startsWith(`${prefix}help clear`)) {
     cmdhelp.helpclear(message);
   }
 });

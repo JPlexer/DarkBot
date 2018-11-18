@@ -15,11 +15,11 @@ module.exports = {
         embed.addField("Spiel und Spaß Commands", `ping\npong\npizza\nhelp\nsinfo\nreport\nPing ${functions.branch} am Anfang um mit ihm zu schreiben`, true);
         embed.addField("Musik Commands", "play\nskip\nstop\nclear\nqueue", true);
         embed.addField("Mod Commands", "kick\nban\ntempban\nmute\ntempmute\nunmute\nwarn\npurge", true);
-    
-    
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+
+
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -33,18 +33,20 @@ module.exports = {
     clstart: function () {
         clbot.setNick(`${functions.branch}`);
     },
-    purge: async function(message, args2) {
+    purge: async function (message, args2) {
         message.delete();
-        if (!message.member.roles.some(r=>["Admin", "Moderator"].includes(r.name))) { 
+        if (!message.member.roles.some(r => ["Admin", "Moderator"].includes(r.name))) {
             message.channel.send('Das kannst du nicht machen!');
             return;
         }
         if (isNaN(args2[0])) {
-                message.channel.send(`Bitte sage wieviele Nachrichten du löschen möchtest. \n Zum Beispiel: ${functions.prefix}purge 6 löscht 6 Nachrichten`);
-       return;
+            message.channel.send(`Bitte sage wieviele Nachrichten du löschen möchtest. \n Zum Beispiel: ${functions.prefix}purge 6 löscht 6 Nachrichten`);
+            return;
         }
-        const fetched = await message.channel.fetchMessages({limit: args2[0]});
+        const fetched = await message.channel.fetchMessages({
+            limit: args2[0]
+        });
         message.channel.bulkDelete(fetched)
             .catch(error => message.channel.send(`Error: ${error}`));
-}
+    }
 }

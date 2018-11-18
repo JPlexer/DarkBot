@@ -38,8 +38,8 @@ module.exports = {
     }
   },
   skip: function (message, guilds) {
-        this.skip_song(message, guilds);
-        message.reply(" Dein Skip wurde angenommen.... Skippe Jetzt!");
+    this.skip_song(message, guilds);
+    message.reply(" Dein Skip wurde angenommen.... Skippe Jetzt!");
   },
   queue: function (message, guilds) {
     let message2 = "```";

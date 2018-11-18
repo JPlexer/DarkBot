@@ -8,9 +8,9 @@ module.exports = {
         embed.setAuthor(`Ping Hilfe`);
         embed.setDescription(`Sendet dir eine nette Nachricht`);
         embed.addField("Benutzung", `(ping`, true);
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -20,9 +20,9 @@ module.exports = {
         embed.setAuthor(`Pong Help`);
         embed.setDescription(`Sendet dir eine nette Nachricht`);
         embed.addField("Benutzung", `(pong`, true);
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -32,9 +32,9 @@ module.exports = {
         embed.setAuthor(`Pizza Hilfe`);
         embed.setDescription(`Gibt dir eine Pizza`);
         embed.addField("Benutzung", `(pizza`, true);
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -45,9 +45,9 @@ module.exports = {
         embed.setDescription(`Kickt einen User (Nur für Mods+)`);
         embed.addField("Benutzung", `(kick @JPlexer Böses Wort\n(kick @JPlexer`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -58,9 +58,9 @@ module.exports = {
         embed.setDescription(`Bannt einen User (Nur für Admin+)`);
         embed.addField("Benutzung", `(ban @JPlexer Wiederholt Böse Wörter\n (ban @JPlexer`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -71,9 +71,9 @@ module.exports = {
         embed.setDescription(`Mutet einen User (Nur für Ice+)`);
         embed.addField("Benutzung", `(mute @JPlexer Spam\n (mute @JPlexer`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -84,9 +84,9 @@ module.exports = {
         embed.setDescription(`Mutet einen User für eine Bestimmte Zeit (Nur für Ice+)`);
         embed.addField("Benutzung", `(tempmute @JPlexer 1m\n (tempmute @JPlexer 2H`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -97,9 +97,9 @@ module.exports = {
         embed.setDescription(`Bannt einen User für eine Bestimmte Zeit (Nur für Admin+)`);
         embed.addField("Benutzung", `(tempban @JPlexer 1m\n (tempban @JPlexer 2H`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -110,9 +110,9 @@ module.exports = {
         embed.setDescription(`Entmutet einen User (Nur für Ice+)`);
         embed.addField("Benutzung", `(unmute @JPlexer`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -123,9 +123,9 @@ module.exports = {
         embed.setDescription(`Löscht mehrere Nachrichten (Nur für Mods+)`);
         embed.addField("Benutzung", `(purge 6, (purge 8, (purge 21`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -136,9 +136,9 @@ module.exports = {
         embed.setDescription(`Reportet einen User an die Detektive`);
         embed.addField("Benutzung", `(report @JPlexer Ich Glaube er ist ein Alt von Jemandem der Gebannt ist!`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -149,9 +149,9 @@ module.exports = {
         embed.setDescription(`Verwarnt einen User (Nur für Mods+)`);
         embed.addField("Benutzung", `(warn @JPlexer Spam`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -162,9 +162,9 @@ module.exports = {
         embed.setDescription(`Zeigt info's über den Server`);
         embed.addField("Benutzung", `(sinfo`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -175,9 +175,9 @@ module.exports = {
         embed.setDescription(`Spiele Musik ab`);
         embed.addField("Benutzung", `(play Xenogenisis\n(play https://www.youtube.com/watch?v=DLzxrzFCyOs`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -188,9 +188,9 @@ module.exports = {
         embed.setDescription(`Überspringt ein Lied`);
         embed.addField("Benutzung", `(skip`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -201,9 +201,9 @@ module.exports = {
         embed.setDescription(`Zeigt das jetzige Lied und alle dannach an`);
         embed.addField("Benutzung", `(queue`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -214,9 +214,9 @@ module.exports = {
         embed.setDescription(`Stoppt alle Lieder`);
         embed.addField("Benutzung", `(stop`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },
@@ -227,9 +227,9 @@ module.exports = {
         embed.setDescription(`Löscht alle Lieder aus der Warteliste ausser das Lied was gerade Läuft`);
         embed.addField("Benutzung", `(clear`, true);
 
-        embed.setFooter(`${functions.branch} von TeamDarkness ${functions.botver}`);
+        embed.setFooter(`${functions.branch} von TeamNaiV ${functions.botver}`);
         message.channel.send("", {
-          embed
+            embed
         });
         return true;
     },

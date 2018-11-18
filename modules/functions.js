@@ -14,20 +14,21 @@ module.exports = {
     }
   },
   setGame: function (client) {
-      client.user.setActivity(module.exports.getRandom(
-        "in der DarknessWorld",
-        "JPlexer nerfen",
-        "DetektivDark nerfen",
-        "Fan von Iggy nerfen",
-        "mit dir und den Anderen Usern",
-        `${module.exports.prefix}help`,
-        `${module.exports.botver}`,
-        `${module.exports.botver}`,
-        `${module.exports.prefix}help`), {
-        type: "PLAYING"
-      });
+    client.user.setActivity(module.exports.getRandom(
+      "mit der NaiVArmy",
+      "JPlexer nerfen",
+      "NaiVion nerfen",
+      "Mineyyy nerfen",
+      "Fan von Iggy nerfen",
+      "mit dir und den Anderen Usern",
+      `${module.exports.prefix}help`,
+      `${module.exports.botver}`,
+      `${module.exports.botver}`,
+      `${module.exports.prefix}help`), {
+      type: "PLAYING"
+    });
   },
   prefix: "(",
-  botver: "b.2.0.1",
-  branch: "DarkBot",
+  botver: "v.2.0.0",
+  branch: "NaiVBot",
 }
