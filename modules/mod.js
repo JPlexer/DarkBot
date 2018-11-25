@@ -64,9 +64,9 @@ module.exports = {
         if (mReason === "") {
             mReason = "undefiniert"
         };
-        if (!message.member.roles.some(r => ["Ice", "Moderator", "Omega", "Blockbuster"].includes(r.name))) return message.channel.send("Du kannst das nicht machen!");
+        if (!message.member.roles.some(r => ["Ice", "Moderator", "Omega", "Santa", "Blockbuster"].includes(r.name))) return message.channel.send("Du kannst das nicht machen!");
 
-        if (mUser.roles.some(r => ["Ice", "Moderator", "Omega", "Blockbuster"].includes(r.name))) return message.channel.send("Die Person kann nicht gemutet werden!");
+        if (mUser.roles.some(r => ["Ice", "Moderator", "Omega", "Santa", "Blockbuster"].includes(r.name))) return message.channel.send("Die Person kann nicht gemutet werden!");
 
         message.guild.channels.forEach((channel, id) => {
             channel.overwritePermissions(mute, {
@@ -92,9 +92,9 @@ module.exports = {
     tempmute: function (message, args2, time, mute) {
         var tmUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if (!tmUser) return message.channel.send("Can't find user!");
-        if (!message.member.roles.some(r => ["Ice", "Moderator", "Omega", "Blockbuster"].includes(r.name))) return message.channel.send("Du kannst das nicht machen!");
+        if (!message.member.roles.some(r => ["Ice", "Moderator", "Omega", "Santa", "Blockbuster"].includes(r.name))) return message.channel.send("Du kannst das nicht machen!");
 
-        if (tmUser.roles.some(r => ["Ice", "Moderator", "Omega", "Blockbuster"].includes(r.name))) return message.channel.send("Die Person kann nicht gemutet werden!");
+        if (tmUser.roles.some(r => ["Ice", "Moderator", "Omega", "Santa", "Blockbuster"].includes(r.name))) return message.channel.send("Die Person kann nicht gemutet werden!");
 
 
         let mutetime = args2[1];
@@ -154,7 +154,7 @@ module.exports = {
     unmute: function (message, mute) {
         var umUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if (!umUser) return message.channel.send("Can't find user!");
-        if (!message.member.roles.some(r => ["Ice", "Moderator", "Omega", "Blockbuster"].includes(r.name))) return message.channel.send("Du kannst das nicht machen!");
+        if (!message.member.roles.some(r => ["Ice", "Moderator", "Omega", "Santa", "Blockbuster"].includes(r.name))) return message.channel.send("Du kannst das nicht machen!");
         var umuteChannel = message.guild.channels.find(`name`, "verwarnungen");
         if (!umuteChannel) return message.channel.send("Kann den Verwarnungs Channel nicht finden!");
 
