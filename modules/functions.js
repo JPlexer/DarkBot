@@ -15,7 +15,7 @@ module.exports = {
   },
   setGame: function (client) {
     client.user.setActivity(module.exports.getRandom(
-      "mit der NaiVArmy",
+      "mit dem NoVenia Server",
       "JPlexer nerfen",
       "NaiVion nerfen",
       "Fan von Iggy nerfen",
